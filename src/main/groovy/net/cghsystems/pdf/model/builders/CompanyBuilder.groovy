@@ -1,11 +1,17 @@
 package net.cghsystems.pdf.model.builders
 
+import javax.annotation.Resource
+
 import net.cghsystems.pdf.model.Address
 import net.cghsystems.pdf.model.Company
-import net.cghsystems.pdf.model.invoice.BankDetails;
-import net.cghsystems.pdf.model.invoice.ContractDetail;
+import net.cghsystems.pdf.model.invoice.BankDetails
+import net.cghsystems.pdf.model.invoice.ContractDetail
+import net.cghsystems.services.InvoiceModelService
 
 class CompanyBuilder {
+
+	@Resource(name = "invoiceModelService")
+	final InvoiceModelService invoiceModelService;
 
 	def buildCompany(days) {
 
