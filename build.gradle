@@ -1,15 +1,13 @@
-apply plugin: 'scala'
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
 
 repositories {
 	mavenCentral()
+	mavenCentral name: "iTextRepo", urls: "http://maven.itextpdf.com"
 }
 
 dependencies {
-	// Libraries needed to run the scala tools
-	scalaTools 'org.scala-lang:scala-compiler:2.8.1'
-	scalaTools 'org.scala-lang:scala-library:2.8.1'
-
-	// Libraries needed for scala api
-	compile 'org.scala-lang:scala-library:2.8.1'
-	compile 'org.neo4j:neo4j:1.4.M05'
+	groovy group: 'org.codehaus.groovy', name: 'groovy', version: '1.7.10'
+	compile group: 'com.itextpdf', name: 'itextpdf', version: '5.0.2'
+	testCompile group: 'junit', name: 'junit', version: '4.8.2'
 }

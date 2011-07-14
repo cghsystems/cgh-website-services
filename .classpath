@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="main/scala/" kind="src" path="src"/>
-	<classpathentry kind="src" path="src/main/scala"/>
-	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="src" path="src/main/groovy"/>
+	<classpathentry kind="src" path="src/test/groovy"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
 	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/cchedl/.gradle/cache/asm/asm-util/jars/asm-util-3.2.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/cchedl/.gradle/cache/asm/asm-commons/jars/asm-commons-3.2.jar" exported="true"/>
+	<classpathentry sourcepath="C:/Documents and Settings/cchedl/.gradle/cache/junit/junit/sources/junit-4.8.2-sources.jar" kind="lib" path="C:/Documents and Settings/cchedl/.gradle/cache/junit/junit/jars/junit-4.8.2.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/cchedl/.gradle/cache/asm/asm-analysis/jars/asm-analysis-3.2.jar" exported="true"/>
+	<classpathentry sourcepath="C:/Documents and Settings/cchedl/.gradle/cache/com.itextpdf/itextpdf/sources/itextpdf-5.0.2-sources.jar" kind="lib" path="C:/Documents and Settings/cchedl/.gradle/cache/com.itextpdf/itextpdf/jars/itextpdf-5.0.2.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/cchedl/.gradle/cache/asm/asm-tree/jars/asm-tree-3.2.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/cchedl/.gradle/cache/asm/asm/jars/asm-3.2.jar" exported="true"/>
+	<classpathentry sourcepath="C:/Documents and Settings/cchedl/.gradle/cache/org.codehaus.groovy/groovy/sources/groovy-1.7.10-sources.jar" kind="lib" path="C:/Documents and Settings/cchedl/.gradle/cache/org.codehaus.groovy/groovy/jars/groovy-1.7.10.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/cchedl/.gradle/cache/antlr/antlr/jars/antlr-2.7.7.jar" exported="true"/>
 </classpath>
