@@ -2,32 +2,25 @@ package net.cghsystems.services;
 
 import javax.annotation.Resource
 
-import net.cghsystems.pdf.model.Address
+import net.cghsystems.model.TestData
+import net.cghsystems.test.util.AnnotationConfigContextLoader
 
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.springframework.context.ApplicationContext
-import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.test.context.ContextConfiguration
-import org.springframework.test.context.ContextLoader
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 
 @RunWith(SpringJUnit4ClassRunner)
-@ContextConfiguration(loader = InvoiceModelServiceTest, value = "net.cghsystems" )
-class InvoiceModelServiceTest implements ContextLoader {
+@ContextConfiguration(loader = AnnotationConfigContextLoader, value = "net.cghsystems" )
+class InvoiceModelServiceTest  {
 
 	@Resource(name = "invoiceModelService")
 	private InvoiceModelService unit;
 
 	@Test
 	void givenValidCGHCompanyIDThenGetCompanyAddressShouldreturnCGHAddress() {
-		Address address = unit.getCompanyAddress(1L)
-
-		assert address.line1 == "51 Brantwood"
-		assert address.line2 == "Chester-le-Street"
-		assert address.town == null
-		assert address.county == "Co. Durham"
-		assert address.postcode == "DH2 2UJ"
+		def actual = unit.getCompanyAddress(1L)
+		assert actual == TestData.address()
 	}
 
 	@Test(expected = InvoiceModelException)
@@ -35,12 +28,14 @@ class InvoiceModelServiceTest implements ContextLoader {
 		unit.getCompanyAddress(-1L);
 	}
 
-
-	ApplicationContext loadContext(String... basePackages) throws Exception {
-		new AnnotationConfigApplicationContext(basePackages);
+	@Test
+	void givenValidCGHCompanyIDThenGetBankDetailsShouldreturnCGHBankDetails() {
+		def actual = unit.getBankDetails(1L)
+		assert actual == TestData.bankDetails();
 	}
 
-	String[] processLocations(Class<?> clazz, String... locations) {
-		return locations;
+	@Test(expected = InvoiceModelException)
+	void givenAnInvalidIDTheGetBankDetailShouldThrowInvoiceModelException() {
+		unit.getBankDetails(-1L);
 	}
 }

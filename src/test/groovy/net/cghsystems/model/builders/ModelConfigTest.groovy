@@ -1,4 +1,4 @@
-package net.cghsystems.pdf.model.builders;
+package net.cghsystems.model.builders;
 
 import static org.junit.Assert.*
 

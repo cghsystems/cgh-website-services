@@ -1,4 +1,4 @@
-package net.cghsystems.pdf
+package net.cghsystems.pdf.itext
 
 
 import com.itextpdf.text.Document

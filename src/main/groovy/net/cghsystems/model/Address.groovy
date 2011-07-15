@@ -1,7 +1,9 @@
-package net.cghsystems.pdf.model
-;
+package net.cghsystems.model
+
+import groovy.transform.EqualsAndHashCode
 
 
+@EqualsAndHashCode
 class Address {
 
 	String line1, line2, town, county, postcode

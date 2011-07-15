@@ -1,16 +1,15 @@
-package net.cghsystems.pdf.model.builders;
+package net.cghsystems.model.invoice.builders;
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 
-import net.cghsystems.pdf.model.Address
-import net.cghsystems.pdf.model.Company
-import net.cghsystems.pdf.model.invoice.Client;
-import net.cghsystems.pdf.model.invoice.Invoice;
+import net.cghsystems.model.Address
+import net.cghsystems.model.Company
+import net.cghsystems.model.builders.CompanyBuilder
+import net.cghsystems.model.invoice.Client
+import net.cghsystems.model.invoice.Invoice
 
-
-
-class InvoiceBuilder {
+class CghsystemsInvoiceBuilder {
 
 	Invoice build(days, fromDate, toDate, number, taxPointDate) {
 

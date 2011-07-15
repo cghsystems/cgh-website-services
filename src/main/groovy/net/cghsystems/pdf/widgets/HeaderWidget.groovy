@@ -1,13 +1,14 @@
 package net.cghsystems.pdf.widgets
 
 
-import net.cghsystems.pdf.model.Address
-import net.cghsystems.pdf.model.Company
+import net.cghsystems.model.Address
+import net.cghsystems.model.Company
+import net.cghsystems.pdf.invoice.InvoicePDFConstants
 
 import com.itextpdf.text.Font
 import com.itextpdf.text.pdf.PdfPTable
 
-class HeaderView {
+class HeaderWidget {
 
 	def build(Company company) {
 
@@ -19,7 +20,7 @@ class HeaderView {
 		addAddressToColumn(company.registeredOffice, addressCol)
 
 		PdfPTable header = new PdfPTable(false, 2)
-		header.setWidthPercentage(PDFInvoiceFormatConstants.TABLE_WIDTH)
+		header.setWidthPercentage(InvoicePDFConstants.TABLE_WIDTH)
 
 		header.addCell(nameCol)
 		header.addCell(addressCol)

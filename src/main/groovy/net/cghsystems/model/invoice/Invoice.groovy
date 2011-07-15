@@ -1,6 +1,6 @@
-package net.cghsystems.pdf.model.invoice;
+package net.cghsystems.model.invoice;
 
-import net.cghsystems.pdf.model.Company
+import net.cghsystems.model.Company
 
 
 

@@ -1,5 +1,6 @@
-package net.cghsystems.pdf.model.invoice;
+package net.cghsystems.model.invoice;
 
+//TODO REnamed InvoiceDetail
 class ContractDetail {
 	Integer days
 	Double rate
