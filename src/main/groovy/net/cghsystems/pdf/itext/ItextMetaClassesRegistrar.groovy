@@ -11,9 +11,9 @@ import com.itextpdf.text.pdf.PdfPCell
 import com.itextpdf.text.pdf.PdfPTable
 import com.itextpdf.text.pdf.draw.LineSeparator
 
-class PdfComponenets {
+class ItextMetaClassesRegistrar {
 
-	static void setup() {
+	static void register() {
 		println "Adding metaMethods to PdfPTable"
 
 		PdfPTable.metaClass.constructor= { boolean showBorder, int numberOfColumns ->
