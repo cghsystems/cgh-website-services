@@ -20,3 +20,5 @@ profiles.xml
 target
 Plan.xml
 build
+.gradle
+.scala_dependencies
