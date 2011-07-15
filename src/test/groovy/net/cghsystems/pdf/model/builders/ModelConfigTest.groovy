@@ -11,6 +11,6 @@ class ModelConfigTest {
 	void test() {
 		AnnotationConfigApplicationContext c = new AnnotationConfigApplicationContext("net.cghsystems.pdf")
 		def companyBuilder = c.getBean("companyBuilder")
-		throw null
+		assert companyBuilder != null
 	}
 }
