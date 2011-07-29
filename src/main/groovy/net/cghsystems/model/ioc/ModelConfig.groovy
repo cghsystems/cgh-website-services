@@ -16,7 +16,7 @@ class ModelConfig {
 	}
 
 	@Bean(name = "companyBuilder")
-	CompanyBuilder Builder() {
+	CompanyBuilder builder() {
 		new CompanyBuilder()
 	}
 }

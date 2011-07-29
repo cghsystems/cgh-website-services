@@ -9,7 +9,7 @@ class ModelConfigTest {
 
 	@Test
 	void test() {
-		AnnotationConfigApplicationContext c = new AnnotationConfigApplicationContext("net.cghsystems.pdf")
+		AnnotationConfigApplicationContext c = new AnnotationConfigApplicationContext("net.cghsystems.model.ioc")
 		def companyBuilder = c.getBean("companyBuilder")
 		assert companyBuilder != null
 	}
