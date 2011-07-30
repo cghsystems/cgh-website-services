@@ -1,14 +1,15 @@
 package net.cghsystems.model
 
 import net.cghsystems.model.invoice.BankDetails
-import net.cghsystems.model.invoice.ContractDetail
+import net.cghsystems.model.invoice.InvoiceCalculation
 
 
-//TODO REname
-class Company {
+/**
+ * The Object that represents the Company tht the invoice is generated for.
+ */
+class InvoiceCompany {
 	String name, companyNumber, vatNumber
 	Address registeredOffice
-	ContractDetail contractDetail;
 	BankDetails bankDetails
 	Date created
 }

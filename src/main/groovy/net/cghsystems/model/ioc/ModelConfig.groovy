@@ -1,6 +1,6 @@
 package net.cghsystems.model.ioc
 
-import net.cghsystems.model.builders.CompanyBuilder
+import net.cghsystems.model.invoice.builders.InvoiceGenerator;
 import net.cghsystems.services.InvoiceModelService
 
 import org.springframework.context.annotation.Bean
@@ -15,8 +15,8 @@ class ModelConfig {
 		new InvoiceModelService()
 	}
 
-	@Bean(name = "companyBuilder")
-	CompanyBuilder builder() {
-		new CompanyBuilder()
+	@Bean(name = "invoiceGenerator")
+	InvoiceGenerator builder() {
+		new InvoiceGenerator()
 	}
 }

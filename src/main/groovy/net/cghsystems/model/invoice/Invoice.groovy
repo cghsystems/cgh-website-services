@@ -1,14 +1,15 @@
 package net.cghsystems.model.invoice;
 
-import net.cghsystems.model.Company
+import net.cghsystems.model.InvoiceCompany
 
-
-
+/**
+ * Object representing an invoice. 
+ */
 class Invoice {
 	int number
 	String description
 	String taxPointDate, fromDate, toDate
-	Client client = new Client()
-	Company company
 	Date taxPointDate2
+	InvoiceCompany invoiceCompany
+	InvoiceClient invoiceClient
 }

@@ -4,8 +4,9 @@ import static org.junit.Assert.*
 
 import javax.annotation.Resource
 
-import net.cghsystems.model.Company
+import net.cghsystems.model.InvoiceCompany
 import net.cghsystems.model.TestData
+import net.cghsystems.model.invoice.builders.InvoiceGenerator;
 import net.cghsystems.test.util.AnnotationConfigContextLoader
 
 import org.junit.Test
@@ -18,11 +19,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 class CompanyBuilderTest {
 
 	@Resource(name = "companyBuilder")
-	CompanyBuilder unit
+	InvoiceGenerator unit
 
 	@Test
 	void givenAValidCompanyForCGHIdShouldBuildCGHCompanyObject() {
-		Company actual = unit.buildCompany(1);
+		InvoiceCompany actual = unit.buildCompany(1);
 		assert actual.registeredOffice == TestData.address()
 		assert actual.bankDetails == TestData.bankDetails()
 	}

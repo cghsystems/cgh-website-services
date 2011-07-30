@@ -2,7 +2,7 @@ package net.cghsystems.pdf.widgets
 
 
 import net.cghsystems.model.Address
-import net.cghsystems.model.Company
+import net.cghsystems.model.InvoiceCompany
 import net.cghsystems.pdf.invoice.InvoicePDFConstants
 
 import com.itextpdf.text.Font
@@ -10,7 +10,7 @@ import com.itextpdf.text.pdf.PdfPTable
 
 class HeaderWidget {
 
-	def build(Company company) {
+	def build(InvoiceCompany company) {
 
 		PdfPTable nameCol = new PdfPTable(false, 1)
 		nameCol.addCell(company.name.toUpperCase(), Font.NORMAL, 14)

@@ -1,7 +1,9 @@
 package net.cghsystems.model.invoice;
 
-//TODO REnamed InvoiceDetail
-class ContractDetail {
+/**
+ * The object representing the totals that are displayed on the invoice 
+ */
+class InvoiceCalculation {
 	Integer days
 	Double rate
 	Double vat

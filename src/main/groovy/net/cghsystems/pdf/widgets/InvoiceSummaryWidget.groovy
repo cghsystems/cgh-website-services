@@ -1,6 +1,6 @@
 package net.cghsystems.pdf.widgets;
 
-import net.cghsystems.model.invoice.Client
+import net.cghsystems.model.invoice.InvoiceClient
 import net.cghsystems.model.invoice.Invoice
 import net.cghsystems.pdf.invoice.InvoicePDFConstants
 
@@ -37,7 +37,7 @@ class InvoiceSummaryWidget {
 		return col
 	}
 
-	void addCounterpartAddressToColumn(Client cpty, PdfPTable column) {
+	void addCounterpartAddressToColumn(InvoiceClient cpty, PdfPTable column) {
 		column.addCell(cpty.name)
 		column.addCell(cpty.address.line1)
 		column.addCell(cpty.address.line2)

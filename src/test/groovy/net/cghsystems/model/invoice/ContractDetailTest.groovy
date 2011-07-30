@@ -1,14 +1,14 @@
 package net.cghsystems.model.invoice;
 
 import static org.junit.Assert.*
-import net.cghsystems.model.invoice.ContractDetail;
+import net.cghsystems.model.invoice.InvoiceCalculation;
 
 import org.junit.Before
 import org.junit.Test
 
 class ContractDetailTest {
 
-	ContractDetail unit
+	InvoiceCalculation unit
 
 	final int days = 20
 
@@ -18,7 +18,7 @@ class ContractDetailTest {
 
 	@Before
 	void before() {
-		unit = new ContractDetail(days: days, rate: rate, vat: vat)
+		unit = new InvoiceCalculation(days: days, rate: rate, vat: vat)
 	}
 
 	@Test
