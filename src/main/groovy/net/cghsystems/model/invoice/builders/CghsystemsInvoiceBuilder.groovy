@@ -11,35 +11,35 @@ import net.cghsystems.model.invoice.Invoice
 
 class CghsystemsInvoiceBuilder {
 
-	Invoice build(days, fromDate, toDate, number, taxPointDate) {
+    Invoice build(days, fromDate, toDate, number, taxPointDate) {
 
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy")
-		Company comp = buildCompany(days);
-		Client client = buildClient();
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy")
+        Company comp = buildCompany(days);
+        Client client = buildClient();
 
-		String description = "For professional services of consultant, working for Data Inc UK Ltd at your client UBS."
+        String description = "For professional services of consultant, working for Data Inc UK Ltd at your client UBS."
 
-		Invoice inv = new Invoice(company: comp,
-				client: client,
-				description: description,
-				fromDate: df.format(fromDate),
-				number: number,
-				taxPointDate: df.format(taxPointDate),
-				toDate: df.format(toDate))
+        Invoice inv = new Invoice(company: comp,
+                client: client,
+                description: description,
+                fromDate: df.format(fromDate),
+                number: number,
+                taxPointDate: df.format(taxPointDate),
+                toDate: df.format(toDate))
 
-		return inv;
-	}
+        return inv;
+    }
 
-	def buildClient() {
-		Address add = new Address(line1: "4 Winnersh Fields",
-				town: "Winnersh",
-				county: "Berkshire",
-				postcode: "RG41 5QS")
+    def buildClient() {
+        Address add = new Address(line1: "4 Winnersh Fields",
+                town: "Winnersh",
+                county: "Berkshire",
+                postcode: "RG41 5QS")
 
-		Client client = new Client(address: add, name: "Data Inc UK Ltd")
-	}
+        Client client = new Client(address: add, name: "Data Inc UK Ltd")
+    }
 
-	def buildCompany(days) {
-		new CompanyBuilder().buildCompany(days)
-	}
+    def buildCompany(days) {
+        new CompanyBuilder().buildCompany(days)
+    }
 }

@@ -2,8 +2,6 @@ package net.cghsystems.model.invoice;
 
 import net.cghsystems.model.Company
 
-
-
 class Invoice {
     int number
     String description

@@ -4,9 +4,13 @@ import net.cghsystems.model.Address
 import net.cghsystems.model.Company
 import net.cghsystems.model.invoice.BankDetails
 import net.cghsystems.model.invoice.ContractDetail
-import net.cghsystems.providers.AddressProvider;
-import net.cghsystems.providers.BankDetailsProvider;
+import net.cghsystems.providers.AddressProvider
+import net.cghsystems.providers.BankDetailsProvider
 
+/**
+ * As this class uses lots of mixins it is essentially using multiple inheritance. 
+ * I have yet to decide if this is a good or a bad thing.
+ */
 @Mixin(AddressProvider)
 @Mixin(BankDetailsProvider)
 class CompanyBuilder {
