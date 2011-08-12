@@ -7,10 +7,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 class ModelConfigTest {
 
-	@Test
-	void test() {
-		AnnotationConfigApplicationContext c = new AnnotationConfigApplicationContext("net.cghsystems.model.ioc")
-		def companyBuilder = c.getBean("companyBuilder")
-		assert companyBuilder != null
-	}
+    @Test
+    void test() {
+        AnnotationConfigApplicationContext c = new AnnotationConfigApplicationContext("net.cghsystems.model.ioc")
+        def companyBuilder = c.getBean("companyBuilder")
+        assert companyBuilder != null
+    }
 }

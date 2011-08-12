@@ -5,7 +5,7 @@ import net.cghsystems.model.Contact
 
 
 class Client {
-	String name
-	Address address
-	Contact contact = new Contact()
+    String name
+    Address address
+    Contact contact = new Contact()
 }

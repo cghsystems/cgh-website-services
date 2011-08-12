@@ -6,8 +6,8 @@ import org.junit.Test
 
 class PDFInvoiceGeneratorTest {
 
-	@Test
-	void toImplement() {
-		throw null
-	}
+    @Test
+    void toImplement() {
+        throw null
+    }
 }

@@ -17,13 +17,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 @ContextConfiguration(loader = AnnotationConfigContextLoader, value = "net.cghsystems" )
 class CompanyBuilderTest {
 
-	@Resource(name = "companyBuilder")
-	CompanyBuilder unit
+    @Resource(name = "companyBuilder")
+    CompanyBuilder unit
 
-	@Test
-	void givenAValidCompanyForCGHIdShouldBuildCGHCompanyObject() {
-		Company actual = unit.buildCompany(1);
-		assert actual.registeredOffice == TestData.address()
-		assert actual.bankDetails == TestData.bankDetails()
-	}
+    @Test
+    void givenAValidCompanyForCGHIdShouldBuildCGHCompanyObject() {
+        Company actual = unit.buildCompany(1);
+        assert actual.registeredOffice == TestData.address()
+        assert actual.bankDetails == TestData.bankDetails()
+    }
 }

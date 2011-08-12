@@ -6,11 +6,11 @@ import org.springframework.test.context.ContextLoader
 
 class AnnotationConfigContextLoader implements ContextLoader {
 
-	ApplicationContext loadContext(String... basePackages) throws Exception {
-		new AnnotationConfigApplicationContext(basePackages);
-	}
+    ApplicationContext loadContext(String... basePackages) throws Exception {
+        new AnnotationConfigApplicationContext(basePackages);
+    }
 
-	String[] processLocations(Class<?> clazz, String... locations) {
-		return locations;
-	}
+    String[] processLocations(Class<?> clazz, String... locations) {
+        return locations;
+    }
 }
