@@ -4,5 +4,5 @@ import groovy.transform.EqualsAndHashCode
 
 @EqualsAndHashCode
 class BankDetails {
-	String name, accountNumber, sortCode, address, reference, remittanceAdvice;
+    String name, accountNumber, sortCode, address, reference, remittanceAdvice;
 }

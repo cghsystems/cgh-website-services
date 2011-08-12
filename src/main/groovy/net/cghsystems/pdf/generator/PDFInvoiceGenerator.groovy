@@ -2,11 +2,9 @@ package net.cghsystems.pdf.generator
 
 
 
-import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.model.invoice.builders.CghsystemsInvoiceBuilder;
-import net.cghsystems.pdf.widgets.HeaderWidget
-import net.cghsystems.pdf.widgets.InvoicePaymentSummaryWidget
-import net.cghsystems.pdf.widgets.InvoicePeriodWidget
+import net.cghsystems.pdf.widgets.InvoiceHeaderWidget
+import net.cghsystems.pdf.widgets.InvoicePaymentSummaryWidgetProvider
+import net.cghsystems.pdf.widgets.InvoicePeriodWidgetProvider
 import net.cghsystems.pdf.widgets.InvoiceSummaryWidget
 
 import com.itextpdf.text.Document
@@ -15,57 +13,47 @@ import com.itextpdf.text.pdf.PdfPTable
 import com.itextpdf.text.pdf.PdfWriter
 
 
-
+/**
+ * Uses lots of Mixins so basically multiple inheritance. Is this bad? I've yet to decide...
+ */
+@Mixin(InvoicePaymentSummaryWidgetProvider)
+@Mixin(InvoicePeriodWidgetProvider)
+@Mixin(InvoiceHeaderWidget)
 class PDFInvoiceGenerator {
 
-	private final Document doc = new Document();
+    private final Document doc = new Document()
 
-	def build(fromDate, toDate, days, number, outputStream) {
+    void build(invoice, outputStream) {
 
-		Invoice invoice = new CghsystemsInvoiceBuilder().build(days, fromDate, toDate, number, toDate)
+        def output = PdfWriter.getInstance(doc, outputStream)
+        doc.open()
 
-		def output = PdfWriter.getInstance(doc, outputStream)
-		doc.open();
+        addMetaData()
 
-		addMetaData();
+        doc.add(buildHeaderWidget(invoice.company))
+        doc.addLineBreak()
+        doc.add(buildInvoiceSummary(invoice))
+        doc.addLineBreak()
+        doc.add(buildInvoicePeriodWidget(invoice))
+        doc.addLineBreak()
+        doc.add(buildInvoicePaymentSummaryWidget(invoice))
+        doc.close()
+    }
 
-		addHeader(invoice)
-		doc.addLineBreak()
-		addInvoiceSummary(invoice);
-		doc.addLineBreak()
-		addPeriodSummary(invoice)
-		doc.addLineBreak()
-		addPaymentSummary(invoice)
-		doc.close();
-	}
+    /** Could add into its own provider */
+    private void addMetaData() {
+        doc.addTitle("Invoice")
+        doc.addSubject("Invoice")
+        doc.addKeywords("Invoice for Christopher Hedley")
+        doc.addAuthor("cgh-systems")
+        doc.addCreator("cgh-systems")
+    }
 
-	void addPaymentSummary(Invoice invoice) {
-		doc.add(new InvoicePaymentSummaryWidget().build(invoice))
-	}
-
-	void addPeriodSummary(Invoice invoice) {
-		doc.add(new InvoicePeriodWidget().build(invoice))
-	}
-
-	void addHeader(invoice) {
-		doc.add(new HeaderWidget().build(invoice.company))
-	}
-
-	void addMetaData() {
-		doc.addTitle("Invoice")
-		doc.addSubject("Invoice")
-		doc.addKeywords("Invoice for Christopher Hedley")
-		doc.addAuthor("cgh-systems")
-		doc.addCreator("cgh-systems")
-	}
-
-	void addInvoiceSummary(invoice) {
-
-		PdfPTable summaryTable = new InvoiceSummaryWidget().build(invoice)
-
-		Paragraph section = new Paragraph();
-		section.add(summaryTable)
-
-		doc.add(section)
-	}
+    /** Could add into its own provider */
+    private buildInvoiceSummary(invoice) {
+        PdfPTable summaryTable = new InvoiceSummaryWidget().build(invoice)
+        Paragraph section = new Paragraph()
+        section.add(summaryTable)
+        doc.add(section)
+    }
 }

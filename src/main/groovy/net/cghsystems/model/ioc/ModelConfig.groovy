@@ -1,7 +1,6 @@
 package net.cghsystems.model.ioc
 
-import net.cghsystems.model.invoice.builders.InvoiceGenerator;
-import net.cghsystems.services.InvoiceModelService
+import net.cghsystems.services.InvoiceService;
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -10,13 +9,8 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class ModelConfig {
 
-	@Bean(name = "invoiceModelService")
-	InvoiceModelService invoiceModelService() {
-		new InvoiceModelService()
-	}
-
-	@Bean(name = "invoiceGenerator")
-	InvoiceGenerator builder() {
-		new InvoiceGenerator()
-	}
+    @Bean(name = "invoiceGenerator")
+    InvoiceService invoiceGenerator() {
+        new InvoiceService()
+    }
 }

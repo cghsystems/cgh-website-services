@@ -13,45 +13,45 @@ import com.itextpdf.text.pdf.draw.LineSeparator
 
 class ItextMetaClassesRegistrar {
 
-	static void register() {
-		println "Adding metaMethods to PdfPTable"
+    static void register() {
+        println "Adding metaMethods to PdfPTable"
 
-		PdfPTable.metaClass.constructor= { boolean showBorder, int numberOfColumns ->
-			PdfPTable p = new PdfPTable(numberOfColumns)
-			if(!showBorder) {
-				p.getDefaultCell().setBorder(Rectangle.NO_BORDER)
-			}
-			return p
-		}
+        PdfPTable.metaClass.constructor= { boolean showBorder, int numberOfColumns ->
+            PdfPTable p = new PdfPTable(numberOfColumns)
+            if(!showBorder) {
+                p.getDefaultCell().setBorder(Rectangle.NO_BORDER)
+            }
+            return p
+        }
 
-		PdfPTable.metaClass.addEmptyCells = { number ->
-			number.times { addCell("") }
-		}
+        PdfPTable.metaClass.addEmptyCells = { number ->
+            number.times { addCell("") }
+        }
 
-		PdfPTable.metaClass.addCell = { String text ->
-			addCell(text, Font.NORMAL, 8)
-		}
+        PdfPTable.metaClass.addCell = { String text ->
+            addCell(text, Font.NORMAL, 8)
+        }
 
-		PdfPTable.metaClass.addCell = { String text, int fontStyle ->
-			addCell(text, fontStyle, 8)
-		}
+        PdfPTable.metaClass.addCell = { String text, int fontStyle ->
+            addCell(text, fontStyle, 8)
+        }
 
-		PdfPTable.metaClass.addCell = {String text, int fontStyle, int fontSize ->
-			PdfPCell pCell = new PdfPCell()
-			pCell.setBorder(Rectangle.NO_BORDER)
-			Font font = FontFactory.getFont(FontFactory.HELVETICA, fontSize)
-			font.setStyle(fontStyle)
-			Phrase phrase = new Phrase(text, font)
-			addCell(phrase)
-		}
+        PdfPTable.metaClass.addCell = {String text, int fontStyle, int fontSize ->
+            PdfPCell pCell = new PdfPCell()
+            pCell.setBorder(Rectangle.NO_BORDER)
+            Font font = FontFactory.getFont(FontFactory.HELVETICA, fontSize)
+            font.setStyle(fontStyle)
+            Phrase phrase = new Phrase(text, font)
+            addCell(phrase)
+        }
 
-		Document.metaClass.addLineBreak = {
-			add(new Paragraph(" "))
-			add(new LineSeparator())
-		}
+        Document.metaClass.addLineBreak = {
+            add(new Paragraph(" "))
+            add(new LineSeparator())
+        }
 
-		Document.metaClass.newLine = {
-			add(new Paragraph(" "))
-		}
-	}
+        Document.metaClass.newLine = {
+            add(new Paragraph(" "))
+        }
+    }
 }
