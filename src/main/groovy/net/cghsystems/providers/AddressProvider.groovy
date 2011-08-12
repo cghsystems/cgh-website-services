@@ -3,6 +3,12 @@ package net.cghsystems.providers
 import groovy.util.logging.Log4j
 import net.cghsystems.model.Address
 
+/**
+ * A Provider for {@code Address}'s. 
+ * <p>
+ * For now the addresses are hardcoded in the object  but it is my intention to 
+ * add a suitable way of abstracting these. Probably to a datastore.
+ */
 @Category(Object)
 @Log4j
 class AddressProvider {
