@@ -20,7 +20,7 @@ class PDFInvoiceGenerator {
 
     private final Document doc = new Document();
 
-    def build(fromDate, toDate, days, number, outputStream) {
+    void build(fromDate, toDate, days, number, outputStream) {
 
         Invoice invoice = new CghsystemsInvoiceBuilder().build(days, fromDate, toDate, number, toDate)
 

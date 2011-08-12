@@ -1,17 +1,15 @@
 package net.cghsystems.model.builders
 
-import javax.annotation.Resource
-
 import net.cghsystems.model.Address
 import net.cghsystems.model.Company
 import net.cghsystems.model.invoice.BankDetails
 import net.cghsystems.model.invoice.ContractDetail
-import net.cghsystems.services.InvoiceModelService
+import net.cghsystems.providers.AddressProvider;
+import net.cghsystems.providers.BankDetailsProvider;
 
+@Mixin(AddressProvider)
+@Mixin(BankDetailsProvider)
 class CompanyBuilder {
-
-    @Resource(name = "invoiceModelService")
-    final InvoiceModelService invoiceModelService;
 
     def buildCompany(days) {
 
@@ -21,8 +19,8 @@ class CompanyBuilder {
         String companyNumber = "7173828"
         String vatNumber = "988 0979 40"
 
-        Address registeredOffice = invoiceModelService.getCompanyAddress(CGH)
-        BankDetails bankDetails = invoiceModelService.getBankDetails(CGH)
+        Address registeredOffice = getAddress(CGH)
+        BankDetails bankDetails = getBankDetails(CGH)
         ContractDetail invoiceDetail = new ContractDetail(days: days, rate: 400, vat: 20)
 
         return new Company(bankDetails: bankDetails,
