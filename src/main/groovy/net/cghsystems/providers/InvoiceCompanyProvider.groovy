@@ -1,7 +1,5 @@
 package net.cghsystems.providers
 
-import java.util.Date
-
 import net.cghsystems.model.InvoiceCompany
 
 

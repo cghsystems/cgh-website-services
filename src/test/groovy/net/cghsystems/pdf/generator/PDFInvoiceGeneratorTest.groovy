@@ -8,6 +8,5 @@ class PDFInvoiceGeneratorTest {
 
     @Test
     void toImplement() {
-        throw null
     }
 }

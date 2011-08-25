@@ -1,6 +1,5 @@
 package net.cghsystems.services
 
-import org.junit.Before;
 import org.junit.Test;
 
 class InvoiceParametersTest {

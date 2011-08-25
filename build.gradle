@@ -1,6 +1,8 @@
 apply plugin: 'announce'
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
+apply plugin: 'code-quality'
+apply from: 'https://raw.github.com/valkolovos/gradle_cobertura/master/ivy/gradle_cobertura/gradle_cobertura/1.0-rc4/coberturainit.gradle'
 
 final String SPRING_VERSION = '3.1.0.M2'
 
@@ -9,8 +11,6 @@ repositories {
     mavenCentral name: "iTextRepo", urls: "http://maven.itextpdf.com"
     mavenCentral name: "springRepo", urls: "http://maven.springframework.org/milestone"
 }
-
-build.doLast() { println "ahahahaha"	 }
 
 dependencies {
     groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.0'

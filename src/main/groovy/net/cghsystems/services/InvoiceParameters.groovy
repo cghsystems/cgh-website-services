@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat
  */
 class InvoiceParameters {
 
-    private static final df = new SimpleDateFormat("dd/MM/yyyy")
+    private static final DF = new SimpleDateFormat("dd/MM/yyyy")
 
     final Long companyId, clientId
     def days, fromDate, toDate, number, taxPointDate
@@ -16,13 +16,13 @@ class InvoiceParameters {
         if(fromDate == "" || fromDate == null) {
             throw new IllegalArgumentException("Cannot form fromDate as it is null")
         }
-        df.format(fromDate)
+        DF.format(fromDate)
     }
 
     def getTaxPointDate() {
         if(taxPointDate == "" || taxPointDate == null) {
             throw new IllegalArgumentException("Cannot form fromDate as it is null")
         }
-        df.format(taxPointDate)
+        DF.format(taxPointDate)
     }
 }
