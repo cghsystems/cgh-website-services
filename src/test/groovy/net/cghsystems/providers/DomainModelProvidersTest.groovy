@@ -12,14 +12,14 @@ class DomainModelProvidersTest  {
 
     @Test
     void givenAValidCompanyForCGHIdShouldBuildCGHCompanyObject() {
-        InvoiceCompany actual = getInvoiceCompany(1)
+        InvoiceCompany actual = getInvoiceCompany(InvoiceConstants.CGH)
         assert actual.registeredOffice == TestData.address()
-        assert actual.bankDetails == TestData.bankDetails()
+        assert actual.bankDetails == TestData.hsbcBankDetails()
     }
 
     @Test
     void givenValidCGHCompanyIDThenGetCompanyAddressShouldReturnCGHAddress() {
-        def actual = getAddress(1L)
+        def actual = getAddress(InvoiceConstants.CGH)
         assert actual == TestData.address()
     }
 
@@ -30,8 +30,8 @@ class DomainModelProvidersTest  {
 
     @Test
     void givenValidCGHCompanyIDThenGetBankDetailsShouldreturnCGHBankDetails() {
-        def actual = getBankDetails(1L)
-        assert actual == TestData.bankDetails()
+        def actual = getBankDetails(InvoiceConstants.CGH)
+        assert actual == TestData.hsbcBankDetails()
     }
 
     @Test(expected = ProviderException)

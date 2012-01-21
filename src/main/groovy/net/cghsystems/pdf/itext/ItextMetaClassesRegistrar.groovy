@@ -1,6 +1,8 @@
 package net.cghsystems.pdf.itext
 
 
+import groovy.util.logging.Log4j
+
 import com.itextpdf.text.Document
 import com.itextpdf.text.Font
 import com.itextpdf.text.FontFactory
@@ -11,6 +13,7 @@ import com.itextpdf.text.pdf.PdfPCell
 import com.itextpdf.text.pdf.PdfPTable
 import com.itextpdf.text.pdf.draw.LineSeparator
 
+@Log4j
 class ItextMetaClassesRegistrar {
 
     static void register() {

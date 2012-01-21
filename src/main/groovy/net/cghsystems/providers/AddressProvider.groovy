@@ -13,7 +13,7 @@ import net.cghsystems.model.Address
 @Log4j
 class AddressProvider {
 
-    Address getAddress(Long companyId) {
+    Address getAddress(companyId) {
         log.info("Returning company address for company with id ${companyId}")
         if(companyId == InvoiceConstants.CGH) {
             return new Address(line1: "51 Brantwood",

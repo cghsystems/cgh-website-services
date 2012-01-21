@@ -1,4 +1,4 @@
-package net.cghsystems.model;
+package net.cghsystems.model
 
 import static org.junit.Assert.*
 
@@ -94,5 +94,11 @@ class AddressTest {
         unit.setPostcode("")
         String expected = "${line1}, ${line2}, ${town}, ${county}"
         assertEquals(expected, unit.toString())
+    }
+
+    @Test
+    void verifyHashCodeAndEquals() {
+        final address1 = new Address(line1: line1, line2: line2, town: town, county: county, postcode: postcode)
+        assert address1 == unit
     }
 }

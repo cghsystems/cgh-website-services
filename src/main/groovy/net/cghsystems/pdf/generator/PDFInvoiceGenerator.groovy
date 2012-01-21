@@ -14,6 +14,13 @@ import com.itextpdf.text.pdf.PdfWriter
 
 
 /**
+ * Should allow a PDF Invoice to be written to a outputStream. The generated PDF should contain:
+ * <ul>
+ *  <li>Invoice Header. Company logo, address etc</li>
+ *  <li>Invoice Summary. I.e the Company the invoice represents, the client etc.</li>
+ *  <li>Invoice Period. I.e the Period of time and the amount of days being invoice for</li>
+ * </ul>
+ * 
  * Uses lots of Mixins so basically multiple inheritance. Is this bad? I've yet to decide...
  */
 @Mixin(InvoicePaymentSummaryWidgetProvider)
@@ -23,7 +30,13 @@ class PDFInvoiceGenerator {
 
     private final Document doc = new Document()
 
-    void build(invoice, outputStream) {
+    /**
+     * Should generate an PDF representation of an Invoice and write it to the provided outputStream
+     * 
+     * @param invoice. The Invoice object to generate the PDF representation for.
+     * @param outputStream to write the PDF to.
+     */
+    void generate(invoice, outputStream) {
 
         def output = PdfWriter.getInstance(doc, outputStream)
         doc.open()

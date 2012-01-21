@@ -10,7 +10,7 @@ import net.cghsystems.model.InvoiceCompany
 @Mixin(BankDetailsProvider)
 class InvoiceCompanyProvider {
 
-    InvoiceCompany  getInvoiceCompany(Long companyId) {
+    InvoiceCompany  getInvoiceCompany(companyId) {
         if(companyId == InvoiceConstants.CGH) {
 
             String name = "CGH Systems Ltd"

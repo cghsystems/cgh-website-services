@@ -11,8 +11,8 @@ class TestData {
                 postcode: "DH2 2UJ")
     }
 
-    static def bankDetails() {
-        def address = bankAddress();
+    static def hsbcBankDetails() {
+        def address = bankAddress()
         return new BankDetails(accountNumber: "71432559",
         name: "HSBC",
         reference: "cgh-systems",
