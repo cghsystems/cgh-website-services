@@ -1,6 +1,6 @@
-package net.cghsystems.model
+package net.cghsystems.model.invoice
 
-import net.cghsystems.model.invoice.BankDetails
+import net.cghsystems.model.Address;
 
 /**
  * The Object that represents the Company that the invoice is generated for. E.g cgh systems ltd.

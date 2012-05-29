@@ -1,7 +1,7 @@
 package net.cghsystems.model.invoice.providers
 
-import net.cghsystems.model.InvoiceCompany
 import net.cghsystems.model.TestData
+import net.cghsystems.model.invoice.InvoiceCompany;
 
 import org.junit.Test
 

@@ -1,8 +1,8 @@
 package net.cghsystems.pdf.widgets
 
 import net.cghsystems.model.invoice.Invoice
+import net.cghsystems.model.Company;
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.model.invoice.InvoiceClient
 import net.cghsystems.pdf.invoice.InvoicePDFConstants
 
 import com.itextpdf.text.pdf.PdfPTable
@@ -24,7 +24,7 @@ class InvoiceSummaryWidget {
         return mainTable
     }
 
-    def buildLeftHandSummaryColumn(InvoiceClient invoiceClient) {
+    def buildLeftHandSummaryColumn(Company invoiceClient) {
 
         PdfPTable a = new PdfPTable(false, 1)
         a.addCell("Invoice to:")
@@ -38,7 +38,7 @@ class InvoiceSummaryWidget {
         return col
     }
 
-    void addCounterpartAddressToColumn(InvoiceClient cpty, PdfPTable column) {
+    void addCounterpartAddressToColumn(Company cpty, PdfPTable column) {
         column.addCell(cpty.name)
         column.addCell(cpty.address.line1)
         column.addCell(cpty.address.line2)

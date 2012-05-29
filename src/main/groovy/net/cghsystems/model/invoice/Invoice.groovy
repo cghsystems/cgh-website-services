@@ -1,7 +1,7 @@
 package net.cghsystems.model.invoice
 
 import net.cghsystems.groovy.transform.NotValid
-import net.cghsystems.model.InvoiceCompany
+import net.cghsystems.model.Company;
 
 
 /**
@@ -13,7 +13,7 @@ class Invoice {
     String taxPointDate, fromDate, toDate
     //Date taxPointDate2
     InvoiceCompany invoiceCompany
-    InvoiceClient invoiceClient
+    Company invoiceClient
     InvoiceCalculation invoiceCalculation
 
     def isValid() {

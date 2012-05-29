@@ -2,13 +2,13 @@ package net.cghsystems.model.invoice.providers
 
 import net.cghsystems.model.Address
 import net.cghsystems.model.Contact
-import net.cghsystems.model.invoice.InvoiceClient
+import net.cghsystems.model.Company;
 
 
 @Category(Object)
 class InvoiceClientDataStore {
 
-    InvoiceClient getInvoiceClient(Long clientId) {
+    Company getInvoiceClient(Long clientId) {
         if(clientId == InvoiceDataStoreCompanyIds.DATA_INC) {
             def add = new Address(line1: "4 Winnersh Fields",
                     town: "Winnersh",
@@ -19,7 +19,7 @@ class InvoiceClientDataStore {
                     ccEmailAddress: "sian@dataincuk.com",
                     name: "Dave")
 
-            return new InvoiceClient(address: add, name: "Data Inc UK Ltd", contact: contact)
+            return new Company(address: add, name: "Data Inc UK Ltd", contact: contact)
         }
     }
 

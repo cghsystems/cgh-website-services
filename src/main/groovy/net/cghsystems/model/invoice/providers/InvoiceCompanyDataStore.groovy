@@ -2,7 +2,7 @@ package net.cghsystems.model.invoice.providers
 
 import java.util.Date
 
-import net.cghsystems.model.InvoiceCompany
+import net.cghsystems.model.invoice.InvoiceCompany;
 
 
 @Category(Object)

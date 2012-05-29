@@ -1,7 +1,7 @@
 package net.cghsystems.pdf.widgets
 
 import net.cghsystems.model.Address
-import net.cghsystems.model.InvoiceCompany
+import net.cghsystems.model.invoice.InvoiceCompany;
 import net.cghsystems.pdf.invoice.InvoicePDFConstants
 
 import com.itextpdf.text.Font

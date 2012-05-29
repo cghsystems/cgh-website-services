@@ -1,12 +1,10 @@
-package net.cghsystems.model.invoice
+package net.cghsystems.model
 
-import net.cghsystems.model.Address
-import net.cghsystems.model.Contact
 
 /**
  *  The object representing the CLient the invoice is for. I.e DataInc
  */
-class InvoiceClient {
+class Company {
     String name
     Address address
     Contact contact
