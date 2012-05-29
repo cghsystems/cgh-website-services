@@ -19,6 +19,7 @@ class InvoiceParameters {
     def companyId, clientId, days, toDate, number, taxPointDate
     String fromDate
 
+    //TODO Look into ising the elvis operator here to make the null check more groovy
     def getFromDate() {
         if(fromDate == "" || fromDate == null) {
             throw new IllegalArgumentException("Cannot form fromDate as it is null. Hint: Try calling isValid to validate instance")

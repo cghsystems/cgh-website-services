@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam
  * Uses Springs REST support to serve up the data required to do all things invoice related. Such as creating invoices, returning 
  * invoice documents, sending emails related to invoices and recording invoices.
  * <p>
- * I prefer this to JAX-RS  for serving up restful services as it feel more like a fist class citzen of Spring. 
+ * I prefer this to JAX-RS for serving up restful services as it feel more like a fist class citzen of Spring. 
  * (Jackson <http://jackson.codehaus.org/> the thing that provides JSON support for JAX is a plugin) although Spring used JAX-RS 
  * and Jackson behind the scenes this is hidden from us. SpringMVC allows optional parameters too. 
- * 
+ * <br><br>
  * {@link http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/mvc.html}
- * 
+ * <p>
  * TODO In order to serve up the JSON required by the client this needs to be mapped to 
  * {@code MappingJacksonJsonView} via the application context. 
  *
