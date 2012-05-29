@@ -1,4 +1,4 @@
-package net.cghsystems.providers
+package net.cghsystems.model.invoice.providers
 
 import java.util.Date
 
@@ -6,12 +6,12 @@ import net.cghsystems.model.InvoiceCompany
 
 
 @Category(Object)
-@Mixin(AddressProvider)
-@Mixin(BankDetailsProvider)
-class InvoiceCompanyProvider {
+@Mixin(AddressDataStore)
+@Mixin(BankDetailsDataStore)
+class InvoiceCompanyDataStore {
 
     InvoiceCompany  getInvoiceCompany(companyId) {
-        if(companyId == InvoiceConstants.CGH) {
+        if(companyId == InvoiceDataStore.CGH) {
 
             String name = "CGH Systems Ltd"
             String companyNumber = "7173828"

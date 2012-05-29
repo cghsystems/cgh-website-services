@@ -1,40 +1,40 @@
-package net.cghsystems.providers
+package net.cghsystems.model.invoice.providers
 
 import net.cghsystems.model.InvoiceCompany
 import net.cghsystems.model.TestData
 
 import org.junit.Test
 
-@Mixin(BankDetailsProvider)
-@Mixin(AddressProvider)
-@Mixin(InvoiceCompanyProvider)
-class DomainModelProvidersTest  {
+@Mixin(BankDetailsDataStore)
+@Mixin(AddressDataStore)
+@Mixin(InvoiceCompanyDataStore)
+class DomainModelDataStoresTest  {
 
     @Test
     void givenAValidCompanyForCGHIdShouldBuildCGHCompanyObject() {
-        InvoiceCompany actual = getInvoiceCompany(InvoiceConstants.CGH)
+        InvoiceCompany actual = getInvoiceCompany(InvoiceDataStore.CGH)
         assert actual.registeredOffice == TestData.address()
         assert actual.bankDetails == TestData.hsbcBankDetails()
     }
 
     @Test
     void givenValidCGHCompanyIDThenGetCompanyAddressShouldReturnCGHAddress() {
-        def actual = getAddress(InvoiceConstants.CGH)
+        def actual = getAddress(InvoiceDataStore.CGH)
         assert actual == TestData.address()
     }
 
-    @Test(expected = ProviderException)
+    @Test(expected = DataStoreException)
     void givenAnInvalidIDTheGetCompanyAddressShouldThrowInvoiceModelException() {
         getAddress(-1L)
     }
 
     @Test
     void givenValidCGHCompanyIDThenGetBankDetailsShouldreturnCGHBankDetails() {
-        def actual = getBankDetails(InvoiceConstants.CGH)
+        def actual = getBankDetails(InvoiceDataStore.CGH)
         assert actual == TestData.hsbcBankDetails()
     }
 
-    @Test(expected = ProviderException)
+    @Test(expected = DataStoreException)
     void givenAnInvalidIDTheGetBankDetailShouldThrowInvoiceModelException() {
         getBankDetails(-1L)
     }

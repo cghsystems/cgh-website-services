@@ -1,4 +1,4 @@
-package net.cghsystems.providers
+package net.cghsystems.model.invoice.providers
 
 import net.cghsystems.model.Address
 import net.cghsystems.model.Contact
@@ -6,10 +6,10 @@ import net.cghsystems.model.invoice.InvoiceClient
 
 
 @Category(Object)
-class InvoiceClientProvider {
+class InvoiceClientDataStore {
 
     InvoiceClient getInvoiceClient(Long clientId) {
-        if(clientId == InvoiceConstants.DATA_INC) {
+        if(clientId == InvoiceDataStore.DATA_INC) {
             def add = new Address(line1: "4 Winnersh Fields",
                     town: "Winnersh",
                     county: "Berkshire",
@@ -24,7 +24,7 @@ class InvoiceClientProvider {
     }
 
     def getInvoiceDescription(Long companyId, Long clientId) {
-        if(companyId == InvoiceConstants.CGH && companyId == InvoiceConstants.DATA_INC) {
+        if(companyId == InvoiceDataStore.CGH && companyId == InvoiceDataStore.DATA_INC) {
             "For professional services of consultant, working for Data Inc UK Ltd at your client UBS."
         }
     }

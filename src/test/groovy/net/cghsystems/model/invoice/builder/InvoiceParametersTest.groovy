@@ -1,4 +1,8 @@
-package net.cghsystems.services
+package net.cghsystems.model.invoice.builder
+
+import java.text.SimpleDateFormat
+
+import net.cghsystems.model.invoice.builders.InvoiceParameters
 
 import org.junit.Test
 
@@ -8,8 +12,8 @@ class InvoiceParametersTest {
 
     @Test
     void giveATaxPointDateWhenGetTaxPointDateThenReturnDateFormattedString() {
-        unit = new InvoiceParameters(taxPointDate: new Date(0))
-        assert "01/01/1970" == unit.getTaxPointDate()
+        unit = new InvoiceParameters(taxPointDate: "01/01/1970")
+        assert new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1970") == unit.getTaxPointDate()
     }
 
     @Test(expected = IllegalArgumentException)
@@ -26,8 +30,8 @@ class InvoiceParametersTest {
 
     @Test
     void giveAFromDateDateWhenGetFromDateThenReturnDateFormattedString() {
-        unit = new InvoiceParameters(taxPointDate: new Date(0))
-        assert "01/01/1970" == unit.getTaxPointDate()
+        unit = new InvoiceParameters(fromDate: "01/01/1970")
+        assert new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1970") == unit.getFromDate()
     }
 
     @Test(expected = IllegalArgumentException)

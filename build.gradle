@@ -5,6 +5,7 @@ apply plugin: 'eclipse'
 final String SPRING_VERSION = '3.1.0.RELEASE'
 
 repositories {
+    mavenLocal()
     mavenCentral()
     mavenCentral name: "iTextRepo", urls: "http://maven.itextpdf.com"
 }
@@ -14,6 +15,7 @@ dependencies {
     groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.0'
 
     compile group: 'com.itextpdf', name: 'itextpdf', version: '5.0.2'
+   // compile group: 'net.cghsystems', name: 'cgh-groovy-ast', version: '0.0.1'
 
     compile group: 'cglib', name: 'cglib', version: '2.2.2'
     compile group: 'log4j', name: 'log4j', version: '1.2.16'

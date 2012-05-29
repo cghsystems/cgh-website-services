@@ -1,4 +1,4 @@
-package net.cghsystems.providers
+package net.cghsystems.model.invoice.providers
 
 import groovy.util.logging.Log4j
 import net.cghsystems.model.Address
@@ -11,22 +11,22 @@ import net.cghsystems.model.Address
  */
 @Category(Object)
 @Log4j
-class AddressProvider {
+class AddressDataStore {
 
     Address getAddress(companyId) {
         log.info("Returning company address for company with id ${companyId}")
-        if(companyId == InvoiceConstants.CGH) {
+        if(companyId == InvoiceDataStore.CGH) {
             return new Address(line1: "51 Brantwood",
             line2: "Chester-le-Street",
             county: "Co. Durham",
             postcode: "DH2 2UJ")
-        }else if(companyId == InvoiceConstants.HSBC) {
+        }else if(companyId == InvoiceDataStore.HSBC) {
             return new Address(line1: "The Helicon",
             line2: "1 South Place",
             town: "The City",
             county: "London",
             postcode: "EC2M 2UP")
         }
-        throw new ProviderException("Address not found for compnay with id ${companyId}")
+        throw new DataStoreException("Address not found for compnay with id ${companyId}")
     }
 }

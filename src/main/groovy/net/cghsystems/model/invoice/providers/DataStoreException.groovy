@@ -1,4 +1,4 @@
-package net.cghsystems.providers
+package net.cghsystems.model.invoice.providers
 
 import groovy.transform.InheritConstructors
 
@@ -6,5 +6,5 @@ import groovy.transform.InheritConstructors
  * An exception to describe an exception if it can not Provide its type.
  */
 @InheritConstructors
-class ProviderException extends Exception {
+class DataStoreException extends Exception {
 }

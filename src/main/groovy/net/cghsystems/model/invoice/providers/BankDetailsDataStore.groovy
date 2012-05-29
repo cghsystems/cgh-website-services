@@ -1,4 +1,4 @@
-package net.cghsystems.providers
+package net.cghsystems.model.invoice.providers
 
 import groovy.util.logging.Log4j
 import net.cghsystems.model.invoice.BankDetails
@@ -10,12 +10,12 @@ import net.cghsystems.model.invoice.BankDetails
  * add a suitable way of abstracting these. Probably to a datastore.
  */
 @Log4j
-@Mixin(AddressProvider)
+@Mixin(AddressDataStore)
 @Category(Object)
-class BankDetailsProvider  {
+class BankDetailsDataStore  {
 
     BankDetails getBankDetails(companyId) {
-        if(companyId == InvoiceConstants.CGH) {
+        if(companyId == InvoiceDataStore.CGH) {
             log.info("Returning company bank details for company with id ${companyId}")
             return new BankDetails(accountNumber: "71432559",
             name: "HSBC",
@@ -24,6 +24,6 @@ class BankDetailsProvider  {
             address: getAddress(InvoiceConstants.HSBC),
             remittanceAdvice: "chris@cghsystems.net")
         }
-        throw new ProviderException("BankDetails not found for compnay with id ${companyId}")
+        throw new DataStoreException("BankDetails not found for compnay with id ${companyId}")
     }
 }
