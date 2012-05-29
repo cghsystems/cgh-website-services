@@ -1,4 +1,4 @@
-package net.cghsystems.pdf.widgets
+package net.cghsystems.pdf.invoice.widgets
 
 
 import net.cghsystems.model.Address

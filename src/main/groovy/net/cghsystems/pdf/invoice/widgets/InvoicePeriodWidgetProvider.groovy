@@ -1,4 +1,4 @@
-package net.cghsystems.pdf.widgets
+package net.cghsystems.pdf.invoice.widgets
 
 import java.text.DecimalFormat
 import java.text.NumberFormat

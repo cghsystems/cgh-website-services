@@ -3,10 +3,10 @@ package net.cghsystems.pdf.generator
 
 
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.pdf.widgets.InvoiceHeaderWidget
-import net.cghsystems.pdf.widgets.InvoicePaymentSummaryWidgetProvider
-import net.cghsystems.pdf.widgets.InvoicePeriodWidgetProvider
-import net.cghsystems.pdf.widgets.InvoiceSummaryWidget
+import net.cghsystems.pdf.invoice.widgets.InvoiceHeaderWidget
+import net.cghsystems.pdf.invoice.widgets.InvoicePaymentSummaryWidgetProvider
+import net.cghsystems.pdf.invoice.widgets.InvoicePeriodWidgetProvider
+import net.cghsystems.pdf.invoice.widgets.InvoiceSummaryWidget
 
 import com.itextpdf.text.Document
 import com.itextpdf.text.Paragraph
