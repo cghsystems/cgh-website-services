@@ -12,14 +12,14 @@ class DomainModelDataStoresTest  {
 
     @Test
     void givenAValidCompanyForCGHIdShouldBuildCGHCompanyObject() {
-        InvoiceCompany actual = getInvoiceCompany(InvoiceDataStore.CGH)
+        InvoiceCompany actual = getInvoiceCompany(InvoiceDataStoreCompanyIds.CGH)
         assert actual.registeredOffice == TestData.address()
         assert actual.bankDetails == TestData.hsbcBankDetails()
     }
 
     @Test
     void givenValidCGHCompanyIDThenGetCompanyAddressShouldReturnCGHAddress() {
-        def actual = getAddress(InvoiceDataStore.CGH)
+        def actual = getAddress(InvoiceDataStoreCompanyIds.CGH)
         assert actual == TestData.address()
     }
 
@@ -30,7 +30,7 @@ class DomainModelDataStoresTest  {
 
     @Test
     void givenValidCGHCompanyIDThenGetBankDetailsShouldreturnCGHBankDetails() {
-        def actual = getBankDetails(InvoiceDataStore.CGH)
+        def actual = getBankDetails(InvoiceDataStoreCompanyIds.CGH)
         assert actual == TestData.hsbcBankDetails()
     }
 

@@ -11,7 +11,7 @@ import net.cghsystems.model.InvoiceCompany
 class InvoiceCompanyDataStore {
 
     InvoiceCompany  getInvoiceCompany(companyId) {
-        if(companyId == InvoiceDataStore.CGH) {
+        if(companyId == InvoiceDataStoreCompanyIds.CGH) {
 
             String name = "CGH Systems Ltd"
             String companyNumber = "7173828"

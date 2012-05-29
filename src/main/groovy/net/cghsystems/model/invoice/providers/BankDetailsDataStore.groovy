@@ -15,13 +15,13 @@ import net.cghsystems.model.invoice.BankDetails
 class BankDetailsDataStore  {
 
     BankDetails getBankDetails(companyId) {
-        if(companyId == InvoiceDataStore.CGH) {
+        if(companyId == InvoiceDataStoreCompanyIds.CGH) {
             log.info("Returning company bank details for company with id ${companyId}")
             return new BankDetails(accountNumber: "71432559",
             name: "HSBC",
             reference: "cgh-systems",
             sortCode: "40-17-31",
-            address: getAddress(InvoiceConstants.HSBC),
+            address: getAddress(InvoiceDataStoreCompanyIds.HSBC),
             remittanceAdvice: "chris@cghsystems.net")
         }
         throw new DataStoreException("BankDetails not found for compnay with id ${companyId}")

@@ -18,7 +18,7 @@ class BankDeailsProviderTest {
 
     @Test
     public void shouldProvideExectedBankDetailsForCGHSystems() {
-        BankDetails actual = getBankDetails(InvoiceDataStore.CGH)
+        BankDetails actual = getBankDetails(InvoiceDataStoreCompanyIds.CGH)
         assert actual == TestData.hsbcBankDetails()
     }
 }

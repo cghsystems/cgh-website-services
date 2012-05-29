@@ -15,12 +15,12 @@ class AddressDataStore {
 
     Address getAddress(companyId) {
         log.info("Returning company address for company with id ${companyId}")
-        if(companyId == InvoiceDataStore.CGH) {
+        if(companyId == InvoiceDataStoreCompanyIds.CGH) {
             return new Address(line1: "51 Brantwood",
             line2: "Chester-le-Street",
             county: "Co. Durham",
             postcode: "DH2 2UJ")
-        }else if(companyId == InvoiceDataStore.HSBC) {
+        }else if(companyId == InvoiceDataStoreCompanyIds.HSBC) {
             return new Address(line1: "The Helicon",
             line2: "1 South Place",
             town: "The City",

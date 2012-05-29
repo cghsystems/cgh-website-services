@@ -1,6 +1,6 @@
 package net.cghsystems.model.invoice.providers
 
-final class InvoiceDataStore {
+final class InvoiceDataStoreCompanyIds {
 
     final static CGH = 1
     final static DATA_INC = 1
