@@ -11,13 +11,13 @@ import org.junit.Before
 import org.junit.Test
 
 
-class InvoiceBuilderNewTest {
+class InvoiceBuilderTest {
 
-    InvoiceBuilderNew unit
+    InvoiceBuilder unit
 
     @Before
     void before() {
-        unit = new InvoiceBuilderNew()
+        unit = new InvoiceBuilder()
     }
 
     @Test

@@ -18,7 +18,7 @@ import net.cghsystems.model.invoice.providers.InvoiceCompanyDataStore
 @Mixin(InvoiceCompanyDataStore)
 @Mixin(InvoiceClientDataStore)
 @Mixin(InvoiceCalculatorDataStore)
-class InvoiceBuilderNew {
+class InvoiceBuilder {
 
     def createInvoice(InvoiceParameters params) {
         if(params.isValid()==true) {
