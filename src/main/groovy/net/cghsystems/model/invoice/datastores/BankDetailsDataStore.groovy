@@ -1,4 +1,4 @@
-package net.cghsystems.model.invoice.providers
+package net.cghsystems.model.invoice.datastores
 
 import groovy.util.logging.Log4j
 import net.cghsystems.model.invoice.BankDetails

@@ -5,7 +5,7 @@ import static org.junit.Assert.*
 import java.text.ParseException
 
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.model.invoice.providers.InvoiceDataStoreCompanyIds
+import net.cghsystems.model.invoice.datastores.InvoiceDataStoreCompanyIds
 
 import org.junit.Before
 import org.junit.Test

@@ -1,4 +1,4 @@
-package net.cghsystems.model.invoice.providers
+package net.cghsystems.model.invoice.datastores
 
 import net.cghsystems.model.Address
 import net.cghsystems.model.Contact

@@ -1,10 +1,9 @@
 package net.cghsystems.model.invoice.builders
 
-import groovy.lang.Mixin
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.model.invoice.providers.InvoiceCalculatorDataStore
-import net.cghsystems.model.invoice.providers.InvoiceClientDataStore
-import net.cghsystems.model.invoice.providers.InvoiceCompanyDataStore
+import net.cghsystems.model.invoice.datastores.InvoiceCalculatorDataStore
+import net.cghsystems.model.invoice.datastores.InvoiceClientDataStore
+import net.cghsystems.model.invoice.datastores.InvoiceCompanyDataStore
 
 /**
  * @author chris

@@ -2,6 +2,11 @@ package net.cghsystems.model.invoice.providers
 
 import net.cghsystems.model.TestData
 import net.cghsystems.model.invoice.InvoiceCompany;
+import net.cghsystems.model.invoice.datastores.AddressDataStore;
+import net.cghsystems.model.invoice.datastores.BankDetailsDataStore;
+import net.cghsystems.model.invoice.datastores.DataStoreException;
+import net.cghsystems.model.invoice.datastores.InvoiceCompanyDataStore;
+import net.cghsystems.model.invoice.datastores.InvoiceDataStoreCompanyIds;
 
 import org.junit.Test
 
