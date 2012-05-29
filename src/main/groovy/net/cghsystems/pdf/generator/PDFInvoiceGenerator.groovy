@@ -2,6 +2,7 @@ package net.cghsystems.pdf.generator
 
 
 
+import net.cghsystems.model.invoice.Invoice
 import net.cghsystems.pdf.widgets.InvoiceHeaderWidget
 import net.cghsystems.pdf.widgets.InvoicePaymentSummaryWidgetProvider
 import net.cghsystems.pdf.widgets.InvoicePeriodWidgetProvider
@@ -36,14 +37,18 @@ class PDFInvoiceGenerator {
      * @param invoice. The Invoice object to generate the PDF representation for.
      * @param outputStream to write the PDF to.
      */
-    void generate(invoice, outputStream) {
+    void generate(Invoice invoice, outputStream) {
+
+        if(invoice == null || outputStream == null) {
+            throw new IllegalStateException("Cannot accept a null parameter")
+        }
 
         def output = PdfWriter.getInstance(doc, outputStream)
         doc.open()
 
         addMetaData()
 
-        doc.add(buildHeaderWidget(invoice.company))
+        doc.add(buildHeaderWidget(invoice.invoiceCompany))
         doc.addLineBreak()
         doc.add(buildInvoiceSummary(invoice))
         doc.addLineBreak()
@@ -53,7 +58,7 @@ class PDFInvoiceGenerator {
         doc.close()
     }
 
-    /** Could add into its own provider */
+    /** Could add into its own mixin provider */
     private void addMetaData() {
         doc.addTitle("Invoice")
         doc.addSubject("Invoice")
@@ -62,11 +67,11 @@ class PDFInvoiceGenerator {
         doc.addCreator("cgh-systems")
     }
 
-    /** Could add into its own provider */
+    /** Could add into its own mixin provider */
     private buildInvoiceSummary(invoice) {
         PdfPTable summaryTable = new InvoiceSummaryWidget().build(invoice)
         Paragraph section = new Paragraph()
         section.add(summaryTable)
-        doc.add(section)
+        section
     }
 }

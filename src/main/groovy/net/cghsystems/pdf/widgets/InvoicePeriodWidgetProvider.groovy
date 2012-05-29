@@ -1,4 +1,4 @@
-package net.cghsystems.pdf.widgets;
+package net.cghsystems.pdf.widgets
 
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -21,11 +21,11 @@ class InvoicePeriodWidgetProvider {
 
         PdfPTable desc = new PdfPTable(false, 1)
         desc.addCell(invoice.description)
-        PdfPCell cell = new PdfPCell(desc);
+        PdfPCell cell = new PdfPCell(desc)
         cell.setBorder(Rectangle.NO_BORDER)
-        cell.setColspan(3);
+        cell.setColspan(3)
         main.addCell(cell)
-        main.setHeaderRows(1);
+        main.setHeaderRows(1)
 
         main.addCell("Period:")
         main.addCell("${invoice.fromDate} - ${invoice.toDate}")
@@ -33,25 +33,25 @@ class InvoicePeriodWidgetProvider {
         main.addEmptyCells(2)
 
         main.addCell("Client:")
-        main.addCell(invoice.client.name)
+        main.addCell(invoice.invoiceClient.name)
 
         main.addEmptyCells(2)
 
         main.addCell("Detail:")
-        main.addCell(invoice.company.contractDetail.toString())
+        main.addCell("${invoice.invoiceCalculation.toString()}")
 
         main.addEmptyCells(5)
 
         NumberFormat fmt = new DecimalFormat("##.##")
-        main.addCell("£ ${fmt.format(invoice.company.contractDetail.totalNoVat())}")
+        main.addCell("£ ${fmt.format(invoice.invoiceCalculation.totalNoVat())}")
 
         main.addEmptyCells(2)
-        main.addCell("Vat @ ${invoice.company.contractDetail.vat}%")
-        main.addCell("£ ${fmt.format(invoice.company.contractDetail.vatOfTotal())}")
+        main.addCell("Vat @ ${invoice.invoiceCalculation.vat}%")
+        main.addCell("£ ${fmt.format(invoice.invoiceCalculation.vatOfTotal())}")
 
         main.addEmptyCells(2)
         main.addCell("Total:")
-        main.addCell("£ ${fmt.format(invoice.company.contractDetail.total())}", Font.BOLD)
+        main.addCell("£ ${fmt.format(invoice.invoiceCalculation.total())}", Font.BOLD)
 
         return main
     }

@@ -12,7 +12,7 @@ class InvoiceSummaryWidget {
 
     def build(Invoice invoice) {
 
-        PdfPTable col1 = buildLeftHandSummaryColumn(invoice)
+        PdfPTable col1 = buildLeftHandSummaryColumn(invoice.invoiceClient)
         PdfPTable col2 = buildRightHandSummaryColumn(invoice)
 
         PdfPTable mainTable = new PdfPTable(false, 2)
@@ -24,13 +24,13 @@ class InvoiceSummaryWidget {
         return mainTable
     }
 
-    def buildLeftHandSummaryColumn(Invoice invoice) {
+    def buildLeftHandSummaryColumn(InvoiceClient invoiceClient) {
 
         PdfPTable a = new PdfPTable(false, 1)
         a.addCell("Invoice to:")
 
         PdfPTable t = new PdfPTable(false, 1)
-        addCounterpartAddressToColumn(invoice.client, t)
+        addCounterpartAddressToColumn(invoiceClient, t)
 
         PdfPTable col = new PdfPTable(false, 2)
         col.addCell(a)
@@ -58,8 +58,8 @@ class InvoiceSummaryWidget {
 
         PdfPTable d = new PdfPTable(false, 1)
         d.addCell("${invoice.number}")
-        d.addCell("${invoice.company.companyNumber}")
-        d.addCell("${invoice.company.vatNumber}")
+        d.addCell("${invoice.invoiceCompany.companyNumber}")
+        d.addCell("${invoice.invoiceCompany.vatNumber}")
         d.addCell("${invoice.taxPointDate}")
 
         col2.addCell(t)
