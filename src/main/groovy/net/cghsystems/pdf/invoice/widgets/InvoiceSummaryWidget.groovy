@@ -1,7 +1,7 @@
 package net.cghsystems.pdf.invoice.widgets
 
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.model.Company;
+import net.cghsystems.model.Company
 import net.cghsystems.model.invoice.Invoice
 import net.cghsystems.pdf.invoice.InvoicePDFConstants
 

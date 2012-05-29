@@ -1,8 +1,6 @@
 package net.cghsystems.model.invoice.datastores
 
-import java.util.Date
-
-import net.cghsystems.model.invoice.InvoiceCompany;
+import net.cghsystems.model.invoice.InvoiceCompany
 
 
 @Category(Object)

@@ -1,8 +1,5 @@
 package net.cghsystems.controllers
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET
-import static org.springframework.web.bind.annotation.RequestMethod.POST
-
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
@@ -34,7 +31,7 @@ class InvoiceController {
      * @param uniques id of the document to find.
      * @return the object representing the document
      */
-    @RequestMapping(value = "/document/{id}", method = GET)
+    @RequestMapping(value = "/document/{id}", method = RequestMethod.GET)
     def getInvoiceDocument(@RequestParam('id') documentId) {
         println documentId
     }
@@ -43,7 +40,7 @@ class InvoiceController {
      * @param invoiceParameters to generate the invoice with.
      * @return TODO
      */
-    @RequestMapping(value = "/{invoiceParameters}", method = POST)
+    @RequestMapping(value = "/{invoiceParameters}", method = RequestMethod.POST)
     def generateInvoice(@RequestParam('invoiceParameters') invoiceParameters) {
         println invoiceParameters
     }
@@ -54,7 +51,7 @@ class InvoiceController {
      * @param the unique id of the invoice to send.  
      * @return TODO
      */
-    @RequestMapping(value = "/email", method = GET)
+    @RequestMapping(value = "/email", method = RequestMethod.GET)
     def sendInvoiceToReceipients(@RequestParam("invoiceId") invoiceId) {
     }
 }
