@@ -13,11 +13,11 @@ import org.junit.Test
 
 
 
-class PDFInvoiceDocumentBuilderTest {
+class InvoicePDFDocumentBuilderTest {
 
     Invoice invoice
 
-    PDFInvoiceDocumentBuilder unit
+    InvoicePDFDocumentBuilder unit
 
 
     @BeforeClass
@@ -27,7 +27,7 @@ class PDFInvoiceDocumentBuilderTest {
 
     @Before
     void before() {
-        unit = new PDFInvoiceDocumentBuilder()
+        unit = new InvoicePDFDocumentBuilder()
         final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012", number: 400,  taxPointDate: "12/12/2001", toDate: "12/12/2005")
         invoice = new InvoiceBuilder().createInvoice(params)
     }

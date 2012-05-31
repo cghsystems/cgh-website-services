@@ -27,7 +27,7 @@ import com.itextpdf.text.pdf.PdfWriter
 @Mixin(InvoicePaymentSummaryWidgetProvider)
 @Mixin(InvoicePeriodWidgetProvider)
 @Mixin(InvoiceHeaderWidget)
-class PDFInvoiceDocumentBuilder {
+class InvoicePDFDocumentBuilder {
 
     private final Document doc = new Document()
 
