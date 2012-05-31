@@ -1,4 +1,4 @@
-package net.cghsystems.pdf.generator
+package net.cghsystems.pdf.builder
 
 import static org.junit.Assert.*
 import net.cghsystems.model.invoice.Invoice
@@ -12,11 +12,12 @@ import org.junit.BeforeClass
 import org.junit.Test
 
 
-class PDFInvoiceGeneratorTest {
+
+class PDFInvoiceDocumentBuilderTest {
 
     Invoice invoice
 
-    PDFInvoiceGenerator unit
+    PDFInvoiceDocumentBuilder unit
 
 
     @BeforeClass
@@ -26,8 +27,8 @@ class PDFInvoiceGeneratorTest {
 
     @Before
     void before() {
-        unit = new PDFInvoiceGenerator()
-        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012", number: 400,  taxPointDate: "12/12/2001", toDate: "12/12/2005"  )
+        unit = new PDFInvoiceDocumentBuilder()
+        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012", number: 400,  taxPointDate: "12/12/2001", toDate: "12/12/2005")
         invoice = new InvoiceBuilder().createInvoice(params)
     }
 

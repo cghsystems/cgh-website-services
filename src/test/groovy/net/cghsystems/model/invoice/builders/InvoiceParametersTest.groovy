@@ -2,8 +2,6 @@ package net.cghsystems.model.invoice.builders
 
 import java.text.SimpleDateFormat
 
-import net.cghsystems.model.invoice.builders.InvoiceParameters
-
 import org.junit.Test
 
 class InvoiceParametersTest {
@@ -49,7 +47,7 @@ class InvoiceParametersTest {
     @Test
     void isNotValid() {
         unit = new InvoiceParameters()
-        assert unit.isValid().getMessage() == "The following fields have not been set: companyId, clientId, days, fromDate, toDate, number, taxPointDate"
+        assert unit.isValid().getMessage() == "The following fields have not been build correctly:  days, companyId, clientId, number"
     }
 
     @Test

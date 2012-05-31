@@ -12,15 +12,11 @@ repositories {
     mavenCentral name: "iTextRepo", urls: "http://maven.itextpdf.com"
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 22f536fd6449c463e32a706df6b21f9ce766c87e
 dependencies {
     groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.0'
 
     compile group: 'com.itextpdf', name: 'itextpdf', version: '5.0.2'
-   // compile group: 'net.cghsystems', name: 'cgh-groovy-ast', version: '0.0.1'
+    compile group: 'net.cghsystems', name: 'cgh-groovy-ast', version: '0.0.2'
 
     compile group: 'cglib', name: 'cglib', version: '2.2.2'
     compile group: 'log4j', name: 'log4j', version: '1.2.16'

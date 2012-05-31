@@ -23,7 +23,8 @@ class InvoiceBuilderTest {
     @Test
     void shoudlReturnInValidAsInvoiceParametersIsPoorlyFormed() {
         final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH)
-        assert unit.createInvoice(params).getMessage() == "The following fields have not been set: clientId, days, fromDate, toDate, number, taxPointDate"
+        println unit.createInvoice(params).getMessage()
+        assert unit.createInvoice(params).getMessage() == "The following fields have not been build correctly:  days, clientId, number"
     }
 
     @Test

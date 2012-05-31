@@ -1,4 +1,4 @@
-package net.cghsystems.pdf.generator
+package net.cghsystems.pdf.builder
 
 
 
@@ -27,7 +27,7 @@ import com.itextpdf.text.pdf.PdfWriter
 @Mixin(InvoicePaymentSummaryWidgetProvider)
 @Mixin(InvoicePeriodWidgetProvider)
 @Mixin(InvoiceHeaderWidget)
-class PDFInvoiceGenerator {
+class PDFInvoiceDocumentBuilder {
 
     private final Document doc = new Document()
 

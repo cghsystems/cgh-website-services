@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam
  * <p>
  * I prefer this to JAX-RS for serving up restful services as it feel more like a fist class citzen of Spring. 
  * (Jackson <http://jackson.codehaus.org/> the thing that provides JSON support for JAX is a plugin) although Spring used JAX-RS 
- * and Jackson behind the scenes this is hidden from us. SpringMVC allows optional parameters too. 
+ * and Jackson behind the scenes this is hidden from us. SpringMVC allows optional parameters too which although break the JAX-RS 
+ * spec are useful. 
  * <br><br>
  * {@link http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/mvc.html}
  * <p>
