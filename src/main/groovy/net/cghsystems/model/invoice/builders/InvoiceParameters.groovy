@@ -8,7 +8,7 @@ import net.cghsystems.groovy.transform.Validateable
 
 
 /**
- * Class encapsulating parameters required to generate an {@code Invoice}  
+ * Class encapsulating parameters required to generate an {@code Invoice} via {@link InvoiceBuilder}
  * <pre>
  *    toDate, fromDate and taxPointDate Must be provided as String in the format dd/MM/yyyy
  * </pre>

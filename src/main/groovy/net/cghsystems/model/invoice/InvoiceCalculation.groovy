@@ -1,7 +1,7 @@
 package net.cghsystems.model.invoice
 
 /**
- * The object representing the totals that are displayed on the invoice 
+ * The domain object representing the totals that are displayed on the invoice 
  */
 class InvoiceCalculation {
     Integer days
