@@ -24,23 +24,23 @@ class InvoiceParameters {
 
     //TODO Look into using the elvis operator here to make the null check more groovy
     def getFromDate() {
-        if(fromDate == "" || fromDate == null) {
-            throw new IllegalArgumentException("Cannot form fromDate as it is null. Hint: Try calling isValid to validate instance")
-        }
+        bounceNulls(fromDate, "fromDate")
         df.parse(fromDate)
     }
 
     def getTaxPointDate() {
-        if(taxPointDate == "" || taxPointDate == null) {
-            throw new IllegalArgumentException("Cannot form fromDate as it is null. Hint Try calling isValid to validate instnace")
-        }
+        bounceNulls(taxPointDate, "taxPointDate")
         df.parse(taxPointDate)
     }
 
     def getToDate() {
-        if(taxPointDate == "" || taxPointDate == null) {
-            throw new IllegalArgumentException("Cannot form toDate as it is null. Hint Try calling isValid to validate instnace")
-        }
+        bounceNulls(toDate, "toDate")
         df.parse(toDate)
+    }
+
+    private bounceNulls(var, varName) {
+        if(var == "" || var == null) {
+            throw new IllegalArgumentException("Cannot form ${varName} as it is null. Hint: Try calling isValid to validate instance")
+        }
     }
 }

@@ -13,9 +13,21 @@ import com.itextpdf.text.pdf.PdfPCell
 import com.itextpdf.text.pdf.PdfPTable
 import com.itextpdf.text.pdf.draw.LineSeparator
 
+/**
+ * Decorates the {@link PdfPTable} and {@link Document} with metaClass methods and constructors to makes its use more. 
+ * Methods include those to add new cells, empty cells and line breaks. A call to register will register 
+ * these methods on any instance created during a JVM's lifecycle. 
+ * 
+ * @author chris
+ *
+ */
 @Log4j
 class ItextMetaClassesRegistrar {
 
+    /**
+     * Addds the methods we want on to the {@link PdfPTable} and {@link Document} metaClass's so we can use 
+     * on any instance.
+     */
     static void register() {
         println "Adding metaMethods to PdfPTable"
 

@@ -6,12 +6,13 @@ import net.cghsystems.model.invoice.datastores.InvoiceClientDataStore
 import net.cghsystems.model.invoice.datastores.InvoiceCompanyDataStore
 
 /**
- * @author chris
  * 
- *         Given a valid {@link InvoiceParameters} will build up the
- *         {@link Invoice} domain object for the provided company. The invoice
- *         should contain the all details related the client, the period
- *         represented, VAT figures and the invoice totals.
+ * Given a valid {@link InvoiceParameters} will build up the
+ * {@link Invoice} domain object for the provided company. The invoice
+ * should contain the all details related the client, the period
+ * represented, VAT figures and the invoice totals.
+ * 
+ * @author chris
  * 
  */
 @Mixin(InvoiceCompanyDataStore)
