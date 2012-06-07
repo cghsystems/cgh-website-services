@@ -1,9 +1,14 @@
 package net.cghsystems.controllers
 
+import groovy.util.logging.Log4j
+
 import org.springframework.stereotype.Controller
+import org.springframework.web.HttpMediaTypeNotAcceptableException
+import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.ResponseBody
 
 /**
  * Uses Springs REST support to serve up the data required to do all things invoice related. Such as creating invoices, returning 
@@ -22,7 +27,9 @@ import org.springframework.web.bind.annotation.RequestParam
  */
 @Controller
 @RequestMapping("/invoice")
+@Log4j
 class InvoiceController {
+
 
     /**
      * Will return the invoice document (typically a pdf) to the client.
@@ -30,20 +37,27 @@ class InvoiceController {
      * This will map to app-context/invoice/pdf/${id}
      * 
      * @param uniques id of the document to find.
-     * @return the object representing the document
+     * @return the object representing the document. As the Method is 
+     * annotated with {@link ResponseBody} and Jackson-Json is on the 
+     * classpath Spring-WS with automatically convert the return type
+     * to JSON on our behalf
      */
+    @ResponseBody
     @RequestMapping(value = "/document/{id}", method = RequestMethod.GET)
-    def getInvoiceDocument(@RequestParam('id') documentId) {
-        println documentId
+    def  getInvoiceDocument(@PathVariable("id") documentId) {
+        log.info("Received request for Invoice Document with Id: ${documentId}")
+        return 1..1000 as byte[]
     }
 
     /**
      * @param invoiceParameters to generate the invoice with.
      * @return TODO
      */
-    @RequestMapping(value = "/{invoiceParameters}", method = RequestMethod.POST)
-    def generateInvoice(@RequestParam('invoiceParameters') invoiceParameters) {
-        println invoiceParameters
+    @ResponseBody
+    @RequestMapping(value = "/create/{invoiceParameters}", method = RequestMethod.POST)
+    def generateInvoice(@PathVariable('invoiceParameters') invoiceParameters) {
+        log.info("Received request to create new Invoicewitjh parameters: ${invoiceParameters }")
+        "test"
     }
 
     /**
@@ -52,7 +66,15 @@ class InvoiceController {
      * @param the unique id of the invoice to send.  
      * @return TODO
      */
-    @RequestMapping(value = "/email", method = RequestMethod.GET)
-    def sendInvoiceToReceipients(@RequestParam("invoiceId") invoiceId) {
+    @ResponseBody
+    @RequestMapping(value = "/email/{invoiceId}", method = RequestMethod.POST)
+    def sendInvoiceToReceipients(@PathVariable("invoiceId") invoiceId) {
+        log.info("Recieved request to send email for invoice ${invoiceId}")
+        "test"
+    }
+
+    @ExceptionHandler(HttpMediaTypeNotAcceptableException)
+    void handle(e) {
+        e.printStackTrace
     }
 }
