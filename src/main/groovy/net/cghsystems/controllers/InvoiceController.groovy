@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody
  * <br><br>
  * {@link http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/mvc.html}
  * <p>
- * TODO In order to serve up the JSON required by the client this needs to be mapped to 
- * {@code MappingJacksonJsonView} via the application context. 
+ * In order to serve up the JSON required by the client this needs to be mapped to 
+ * {@code MappingJacksonJsonView} via the application context. See {@link InvoiceControllersApplicationContext} 
  *
  */
 @Controller
@@ -30,17 +30,16 @@ import org.springframework.web.bind.annotation.ResponseBody
 @Log4j
 class InvoiceController {
 
-
     /**
      * Will return the invoice document (typically a pdf) to the client.
      * <p>
-     * This will map to app-context/invoice/pdf/${id}
+     * This will map to the URL app-context/invoice/document/${id}
      * 
      * @param uniques id of the document to find.
      * @return the object representing the document. As the Method is 
      * annotated with {@link ResponseBody} and Jackson-Json is on the 
      * classpath Spring-WS with automatically convert the return type
-     * to JSON on our behalf
+     * to JSON on our behalf.
      */
     @ResponseBody
     @RequestMapping(value = "/document/{id}", method = RequestMethod.GET)

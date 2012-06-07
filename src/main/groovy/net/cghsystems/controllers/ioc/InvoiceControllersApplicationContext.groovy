@@ -4,23 +4,26 @@ import net.cghsystems.controllers.InvoiceController
 
 import org.springframework.beans.factory.annotation.Configurable
 import org.springframework.context.annotation.Bean
-import org.springframework.http.converter.HttpMessageConverter
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
+
+/**
+ * Application context to to provide the Spring configuration required to create 
+ * all Invoice web-mvc related Spring managed Beans.
+ * <p>
+ * Uses {@link EnableWebMvc} to ensure that the {@link MappingJacksonHttpMessageConverter} {@link MessageConverter} 
+ * is registered. (An alternative to this annotation is to extend {@link WebMvcConfigurerAdapter} and register the 
+ * {@link MessageConverter} explicitly). 
+ * 
+ * @author chris
+ *
+ */
 @Configurable
 @EnableWebMvc
-public class InvoiceControllersApplicationContext extends
-WebMvcConfigurerAdapter {
+public class InvoiceControllersApplicationContext  {
 
     @Bean
     InvoiceController invoiceController() {
         return new InvoiceController()
     }
-
-    //    @Override
-    //    public void configureMessageConverters(
-    //    List<HttpMessageConverter<?>> converters) {
-    //        converters.add(new MappingJacksonHttpMessageConverter())
-    //    }
 }
