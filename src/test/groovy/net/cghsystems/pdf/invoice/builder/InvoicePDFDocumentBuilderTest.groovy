@@ -1,10 +1,11 @@
-package net.cghsystems.pdf.builder
+package net.cghsystems.pdf.invoice.builder
 
 import static org.junit.Assert.*
 import net.cghsystems.model.invoice.Invoice
 import net.cghsystems.model.invoice.builders.InvoiceBuilder
 import net.cghsystems.model.invoice.builders.InvoiceParameters
 import net.cghsystems.model.invoice.datastores.InvoiceDataStoreCompanyIds
+import net.cghsystems.pdf.invoice.builder.InvoicePDFDocumentBuilder;
 import net.cghsystems.pdf.itext.ItextMetaClassesRegistrar
 
 import org.junit.Before

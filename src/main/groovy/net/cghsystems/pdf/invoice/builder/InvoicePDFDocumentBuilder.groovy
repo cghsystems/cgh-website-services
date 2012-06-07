@@ -1,4 +1,4 @@
-package net.cghsystems.pdf.builder
+package net.cghsystems.pdf.invoice.builder
 
 
 
