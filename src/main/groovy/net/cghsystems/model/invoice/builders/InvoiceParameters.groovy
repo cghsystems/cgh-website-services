@@ -4,6 +4,7 @@ package net.cghsystems.model.invoice.builders
 import java.text.SimpleDateFormat
 
 import net.cghsystems.groovy.transform.Validateable
+import net.cghsystems.groovy.transform.Validateable.ValidatableReturnTypes
 
 
 
@@ -14,7 +15,7 @@ import net.cghsystems.groovy.transform.Validateable
  * </pre>
  * 
  */
-@Validateable
+@Validateable(ValidatableReturnTypes.NOT_VALID_FOR_INVALID)
 class InvoiceParameters {
 
     private final SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy")
@@ -22,7 +23,6 @@ class InvoiceParameters {
     def companyId, clientId, days, toDate, number, taxPointDate
     String fromDate
 
-    //TODO Look into using the elvis operator here to make the null check more groovy
     def getFromDate() {
         bounceNulls(fromDate, "fromDate")
         df.parse(fromDate)
