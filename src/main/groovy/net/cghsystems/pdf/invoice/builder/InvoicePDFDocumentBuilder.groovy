@@ -43,6 +43,8 @@ class InvoicePDFDocumentBuilder {
             throw new IllegalStateException("Cannot accept a null parameter")
         }
 
+        invoice.isValid()
+
         def output = PdfWriter.getInstance(doc, outputStream)
         doc.open()
 
