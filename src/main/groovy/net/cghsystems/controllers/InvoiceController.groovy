@@ -55,7 +55,7 @@ class InvoiceController {
     @ResponseBody
     @RequestMapping(value = "/create/{invoiceParameters}", method = RequestMethod.POST)
     def generateInvoice(@PathVariable('invoiceParameters') invoiceParameters) {
-        log.info("Received request to create new Invoicewitjh parameters: ${invoiceParameters }")
+        log.info("Received request to create new Invoice with parameters: ${invoiceParameters }")
         "test"
     }
 
