@@ -7,7 +7,6 @@ import static org.springframework.test.web.server.request.MockMvcRequestBuilders
 import static org.springframework.test.web.server.result.MockMvcResultMatchers.*
 import net.cghsystems.controllers.ioc.InvoiceControllersApplicationContext
 
-import org.junit.Ignore
 import org.junit.Test
 import org.springframework.test.web.server.setup.MockMvcBuilders
 
@@ -15,9 +14,8 @@ import org.springframework.test.web.server.setup.MockMvcBuilders
 class InvoiceControllerTest {
 
     @Test
-    @Ignore("Failing build for now...")
     void shouldGetInvoiceDocument() {
-        def pdfByteArray = new String(1..1000 as byte[])
+        def pdfByteArray = "test"
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
                 .perform(get("/invoice/document/{id}", 1)).andExpect(status().isOk()).andExpect(content().string(pdfByteArray))
     }
