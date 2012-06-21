@@ -1,4 +1,4 @@
-package net.cghsystems.pdf.dividend
+package net.cghsystems.pdf.dividend.widgets
 
 
 import net.cghsystems.pdf.shared.PDFDocumentConstants

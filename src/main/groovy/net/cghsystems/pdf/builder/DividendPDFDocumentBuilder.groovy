@@ -1,7 +1,12 @@
-package net.cghsystems.pdf.dividend
+package net.cghsystems.pdf.builder
 
 import net.cghsystems.model.dividend.DividendDeclaration
-import net.cghsystems.model.dividend.datastores.DividendDeclarationDataStore
+import net.cghsystems.pdf.dividend.widgets.PDFDistributionDetailsBuilder
+import net.cghsystems.pdf.dividend.widgets.PDFDividendMeetingDescriptionBuilder
+import net.cghsystems.pdf.dividend.widgets.PDFDividendSummaryBuilder
+import net.cghsystems.pdf.dividend.widgets.PDFPaymentDetailsBuilder
+import net.cghsystems.pdf.dividend.widgets.PDFSignatureFooterBuilder
+import net.cghsystems.pdf.shared.builder.PDFDocumentBuilder
 import net.cghsystems.pdf.shared.widgets.HeaderWidget
 
 import com.itextpdf.text.Document
@@ -9,15 +14,32 @@ import com.itextpdf.text.Element
 import com.itextpdf.text.Paragraph
 import com.itextpdf.text.pdf.PdfWriter
 
-class PDFDividendGenerator {
+/**
+ * Top level {@link DividendDeclaration} PDF object that allows a  PDF Dividend document to be written to a outputStream. 
+ * The generated PDF
+ * 
+ * should contain:
+ * <ul>
+ *  * A Dividend Summary
+ *  * A meeting description
+ *  * The distribution details of of who requires a copy of these documents.
+ *  * The payment details of how the dividend should be paid.
+ *  * A Footer to close the document.
+ * </ul>
+ *
+ * Uses lots of Mixin's so basically multiple inheritance. Is this bad? I've yet to decide...
+ */
+class DividendPDFDocumentBuilder implements PDFDocumentBuilder<DividendDeclaration> {
 
+    /** The itext 'canvas' to create the pdf within */
     private final Document doc = new Document()
 
-    def build(date, dividend, outputStream) {
+    /* (non-Javadoc)
+     * @see net.cghsystems.pdf.shared.builder.PDFDocumentBuilder#generate(java.lang.Object, java.io.OutputStream)
+     */
+    public void generate(DividendDeclaration declaration, OutputStream pdfOutputStream) {
 
-        DividendDeclaration declaration = new DividendDeclarationDataStore().build(date, dividend)
-
-        def output = PdfWriter.getInstance(doc, outputStream)
+        def output = PdfWriter.getInstance(doc, pdfOutputStream)
         doc.open()
 
         addHeader(declaration.company)
