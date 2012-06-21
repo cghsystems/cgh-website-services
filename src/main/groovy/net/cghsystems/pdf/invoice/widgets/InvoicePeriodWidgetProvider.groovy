@@ -4,7 +4,7 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.pdf.shared.PDFDocumentConstants;
+import net.cghsystems.pdf.shared.PDFDocumentConstants
 
 import com.itextpdf.text.Font
 import com.itextpdf.text.Rectangle
@@ -43,15 +43,15 @@ class InvoicePeriodWidgetProvider {
         main.addEmptyCells(5)
 
         NumberFormat fmt = new DecimalFormat("##.##")
-        main.addCell("Â£ ${fmt.format(invoice.invoiceCalculation.totalNoVat())}")
+        main.addCell("£ ${fmt.format(invoice.invoiceCalculation.totalNoVat())}")
 
         main.addEmptyCells(2)
         main.addCell("Vat @ ${invoice.invoiceCalculation.vat}%")
-        main.addCell("Â£ ${fmt.format(invoice.invoiceCalculation.vatOfTotal())}")
+        main.addCell("£ ${fmt.format(invoice.invoiceCalculation.vatOfTotal())}")
 
         main.addEmptyCells(2)
-        main.addCell("Total:")
-        main.addCell("Â£ ${fmt.format(invoice.invoiceCalculation.total())}", Font.BOLD)
+        main.addCell("Total:")ú
+        main.addCell("£ ${fmt.format(invoice.invoiceCalculation.total())}", Font.BOLD)
 
         return main
     }

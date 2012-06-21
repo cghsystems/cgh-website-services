@@ -22,9 +22,9 @@ class PDFDistributionDetailsWidget {
         NumberFormat fmt = new DecimalFormat("####.##")
 
         PdfPTable d = new PdfPTable(false, 1)
-        d.addCell("Â£ ${fmt.format(dividend.dividend)}")
-        d.addCell("Â£ ${fmt.format(dividend.taxCredit())}")
-        d.addCell("Â£ ${fmt.format(dividend.grossDividend())}")
+        d.addCell("£ ${fmt.format(dividend.dividend)}")
+        d.addCell("£ ${fmt.format(dividend.taxCredit())}")
+        d.addCell("£ ${fmt.format(dividend.grossDividend())}")
 
         summaryTable.addCell(t)
         summaryTable.addCell(d)
