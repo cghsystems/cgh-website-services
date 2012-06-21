@@ -1,4 +1,4 @@
-package net.cghsystems.pdf.dividend.widgets
+package net.cghsystems.pdf.dividend.builder
 
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory 

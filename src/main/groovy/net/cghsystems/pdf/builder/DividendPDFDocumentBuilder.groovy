@@ -1,8 +1,8 @@
 package net.cghsystems.pdf.builder
 
 import net.cghsystems.model.dividend.DividendDeclaration
+import net.cghsystems.pdf.dividend.builder.PDFDividendMeetingDescriptionBuilder;
 import net.cghsystems.pdf.dividend.widgets.PDFDistributionDetailsBuilder
-import net.cghsystems.pdf.dividend.widgets.PDFDividendMeetingDescriptionBuilder
 import net.cghsystems.pdf.dividend.widgets.PDFDividendSummaryBuilder
 import net.cghsystems.pdf.dividend.widgets.PDFPaymentDetailsBuilder
 import net.cghsystems.pdf.dividend.widgets.PDFSignatureFooterBuilder
