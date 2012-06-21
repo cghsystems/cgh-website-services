@@ -4,7 +4,7 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.pdf.invoice.InvoicePDFConstants
+import net.cghsystems.pdf.shared.PDFDocumentConstants;
 
 import com.itextpdf.text.Font
 import com.itextpdf.text.Rectangle
@@ -16,7 +16,7 @@ class InvoicePeriodWidgetProvider {
 
     def buildInvoicePeriodWidget(Invoice invoice) {
         PdfPTable main = new PdfPTable(false, 4)
-        main.setWidthPercentage(InvoicePDFConstants.TABLE_WIDTH)
+        main.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)
         main.addCell("Description:")
 
         PdfPTable desc = new PdfPTable(false, 1)

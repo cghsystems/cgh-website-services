@@ -1,4 +1,4 @@
-package net.cghsystems.model.invoice.datastores
+package net.cghsystems.model.datastores
 
 import groovy.transform.InheritConstructors
 

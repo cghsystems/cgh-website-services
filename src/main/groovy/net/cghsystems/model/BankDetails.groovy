@@ -1,6 +1,5 @@
-package net.cghsystems.model.invoice
+package net.cghsystems.model
 
-import net.cghsystems.model.Address
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 

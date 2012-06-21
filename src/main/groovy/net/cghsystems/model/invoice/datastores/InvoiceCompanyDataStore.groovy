@@ -1,5 +1,7 @@
 package net.cghsystems.model.invoice.datastores
 
+import net.cghsystems.model.datastores.AddressDataStore;
+import net.cghsystems.model.datastores.BankDetailsDataStore;
 import net.cghsystems.model.invoice.InvoiceCompany
 
 

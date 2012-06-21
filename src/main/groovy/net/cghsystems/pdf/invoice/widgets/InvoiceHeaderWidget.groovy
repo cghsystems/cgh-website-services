@@ -2,7 +2,7 @@ package net.cghsystems.pdf.invoice.widgets
 
 import net.cghsystems.model.Address
 import net.cghsystems.model.invoice.InvoiceCompany;
-import net.cghsystems.pdf.invoice.InvoicePDFConstants
+import net.cghsystems.pdf.shared.PDFDocumentConstants;
 
 import com.itextpdf.text.Font
 import com.itextpdf.text.pdf.PdfPTable
@@ -21,7 +21,7 @@ class InvoiceHeaderWidget {
         addAddressToColumn(invoice.registeredOffice, addressCol)
 
         PdfPTable header = new PdfPTable(false, 2)
-        header.setWidthPercentage(InvoicePDFConstants.TABLE_WIDTH)
+        header.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)
 
         header.addCell(nameCol)
         header.addCell(addressCol)

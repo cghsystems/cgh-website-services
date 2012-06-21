@@ -1,6 +1,5 @@
 package net.cghsystems.model
 
-import net.cghsystems.model.invoice.BankDetails
 
 class TestData {
 

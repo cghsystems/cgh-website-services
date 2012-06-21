@@ -1,7 +1,8 @@
-package net.cghsystems.model.invoice.datastores
+package net.cghsystems.model.datastores
 
 import groovy.util.logging.Log4j
-import net.cghsystems.model.invoice.BankDetails
+import net.cghsystems.model.BankDetails;
+import net.cghsystems.model.invoice.datastores.InvoiceDataStoreCompanyIds;
 
 /**
  * A Provider for {@code BankDetails}'s. 

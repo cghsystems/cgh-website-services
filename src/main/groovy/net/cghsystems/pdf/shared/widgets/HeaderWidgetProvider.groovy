@@ -1,9 +1,8 @@
-package net.cghsystems.pdf.invoice.widgets
+package net.cghsystems.pdf.shared.widgets
 
 
 import net.cghsystems.model.Address
 import net.cghsystems.model.invoice.InvoiceCompany;
-import net.cghsystems.pdf.invoice.InvoicePDFConstants
 
 import com.itextpdf.text.Font
 import com.itextpdf.text.pdf.PdfPTable

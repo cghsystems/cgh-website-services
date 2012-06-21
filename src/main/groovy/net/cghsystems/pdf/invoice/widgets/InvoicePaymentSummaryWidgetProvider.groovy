@@ -1,7 +1,7 @@
 package net.cghsystems.pdf.invoice.widgets
 
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.pdf.invoice.InvoicePDFConstants
+import net.cghsystems.pdf.shared.PDFDocumentConstants;
 
 import com.itextpdf.text.Paragraph
 import com.itextpdf.text.pdf.PdfPTable
@@ -42,7 +42,7 @@ class InvoicePaymentSummaryWidgetProvider {
         rightColumn.addCell(invoice.invoiceCompany.bankDetails.remittanceAdvice)
 
         PdfPTable main = new PdfPTable(false, 2)
-        main.setWidthPercentage(InvoicePDFConstants.TABLE_WIDTH)
+        main.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)
         main.addCell(leftColumn)
         main.addCell(rightColumn)
         paragraph.add(main)

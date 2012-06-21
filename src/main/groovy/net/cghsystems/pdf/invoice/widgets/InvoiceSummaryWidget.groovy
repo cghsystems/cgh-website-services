@@ -3,7 +3,7 @@ package net.cghsystems.pdf.invoice.widgets
 import net.cghsystems.model.invoice.Invoice
 import net.cghsystems.model.Company
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.pdf.invoice.InvoicePDFConstants
+import net.cghsystems.pdf.shared.PDFDocumentConstants;
 
 import com.itextpdf.text.pdf.PdfPTable
 
@@ -16,7 +16,7 @@ class InvoiceSummaryWidget {
         PdfPTable col2 = buildRightHandSummaryColumn(invoice)
 
         PdfPTable mainTable = new PdfPTable(false, 2)
-        mainTable.setWidthPercentage(InvoicePDFConstants.TABLE_WIDTH)
+        mainTable.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)
 
         mainTable.addCell(col1)
         mainTable.addCell(col2)

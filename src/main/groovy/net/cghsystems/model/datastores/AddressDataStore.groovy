@@ -1,7 +1,8 @@
-package net.cghsystems.model.invoice.datastores
+package net.cghsystems.model.datastores
 
 import groovy.util.logging.Log4j
 import net.cghsystems.model.Address
+import net.cghsystems.model.invoice.datastores.InvoiceDataStoreCompanyIds;
 
 /**
  * A Provider for {@code Address}'s. 

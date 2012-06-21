@@ -1,5 +1,6 @@
 package net.cghsystems.model.invoice.datastores
 
+import net.cghsystems.model.datastores.DataStoreException;
 import net.cghsystems.model.invoice.InvoiceCalculation
 
 
