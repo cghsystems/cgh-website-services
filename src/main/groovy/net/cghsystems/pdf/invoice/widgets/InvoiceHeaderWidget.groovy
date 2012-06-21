@@ -18,7 +18,7 @@ class InvoiceHeaderWidget {
 
         PdfPTable addressCol = new PdfPTable(false, 1)
         addressCol.setHorizontalAlignment(PdfPTable.ALIGN_RIGHT)
-        addAddressToColumn(invoice.registeredOffice, addressCol)
+        addAddressToColumn(invoice.address, addressCol)
 
         PdfPTable header = new PdfPTable(false, 2)
         header.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)

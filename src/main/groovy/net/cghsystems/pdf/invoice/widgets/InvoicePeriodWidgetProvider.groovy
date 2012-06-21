@@ -50,7 +50,7 @@ class InvoicePeriodWidgetProvider {
         main.addCell("£ ${fmt.format(invoice.invoiceCalculation.vatOfTotal())}")
 
         main.addEmptyCells(2)
-        main.addCell("Total:")ú
+        main.addCell("Total:")
         main.addCell("£ ${fmt.format(invoice.invoiceCalculation.total())}", Font.BOLD)
 
         return main

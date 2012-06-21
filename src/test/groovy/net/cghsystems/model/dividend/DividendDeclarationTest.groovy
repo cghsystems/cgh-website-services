@@ -12,4 +12,22 @@ class DividendDeclarationTest {
         assert 666.67 == unit.taxCredit()
         assert 6666.67 == unit.grossDividend()
     }
+
+    @Test
+    void taxCreditShouldHandleNullDividendGracefully() {
+        DividendDeclaration unit = new DividendDeclaration()
+        assert 0 == unit.taxCredit()
+    }
+
+    @Test
+    void grossDividendShouldHandleNullDividendGracefully() {
+        DividendDeclaration unit = new DividendDeclaration()
+        assert 0 == unit.grossDividend()
+    }
+
+    @Test
+    void isValid() {
+        DividendDeclaration unit = new DividendDeclaration()
+        assert "The following fields have not been build correctly:  director, dateHeld, company, dividend" ==  unit.isValid().message
+    }
 }

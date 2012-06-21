@@ -41,7 +41,7 @@ class InvoicePaymentSummaryWidgetProvider {
 
         PdfPTable rightColumn = new PdfPTable(false, 1)
         rightColumn.addCell(invoice.invoiceCompany.name)
-        rightColumn.addCell(invoice.invoiceCompany.registeredOffice.toString())
+        rightColumn.addCell(invoice.invoiceCompany.address.toString())
         rightColumn.addCell(invoice.invoiceCompany.bankDetails.name)
         rightColumn.addCell(invoice.invoiceCompany.bankDetails.address.toString())
         rightColumn.addCell(invoice.invoiceCompany.bankDetails.sortCode)

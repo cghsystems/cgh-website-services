@@ -1,12 +1,10 @@
 package net.cghsystems.model.invoice.datastores
 
 import net.cghsystems.model.TestData
-import net.cghsystems.model.datastores.AddressDataStore;
-import net.cghsystems.model.datastores.BankDetailsDataStore;
-import net.cghsystems.model.datastores.DataStoreException;
-import net.cghsystems.model.invoice.InvoiceCompany;
-import net.cghsystems.model.invoice.datastores.InvoiceCompanyDataStore;
-import net.cghsystems.model.invoice.datastores.InvoiceDataStoreCompanyIds;
+import net.cghsystems.model.datastores.AddressDataStore
+import net.cghsystems.model.datastores.BankDetailsDataStore
+import net.cghsystems.model.datastores.DataStoreException
+import net.cghsystems.model.invoice.InvoiceCompany
 
 import org.junit.Test
 
@@ -18,7 +16,7 @@ class DomainModelDataStoresTest  {
     @Test
     void givenAValidCompanyForCGHIdShouldBuildCGHCompanyObject() {
         InvoiceCompany actual = getInvoiceCompany(InvoiceDataStoreCompanyIds.CGH)
-        assert actual.registeredOffice == TestData.address()
+        assert actual.address == TestData.address()
         assert actual.bankDetails == TestData.hsbcBankDetails()
     }
 

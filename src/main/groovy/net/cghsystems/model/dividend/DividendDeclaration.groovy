@@ -3,6 +3,8 @@ package net.cghsystems.model.dividend
 
 import java.math.RoundingMode
 
+import net.cghsystems.groovy.transform.Validateable
+import net.cghsystems.groovy.transform.Validateable.ValidatableReturnTypes
 import net.cghsystems.model.Company
 import net.cghsystems.model.Contact
 
@@ -16,6 +18,7 @@ import net.cghsystems.model.Contact
  * @author chris
  *
  */
+@Validateable(ValidatableReturnTypes.NOT_VALID_FOR_INVALID)
 class DividendDeclaration {
 
     String dateHeld
@@ -24,10 +27,10 @@ class DividendDeclaration {
     BigDecimal dividend
 
     BigDecimal taxCredit() {
-        dividend.divide(9, RoundingMode.HALF_EVEN)
+        dividend ? dividend.divide(9, RoundingMode.HALF_EVEN) : 0
     }
 
     BigDecimal grossDividend() {
-        dividend.add(taxCredit())
+        dividend ?  dividend.add(taxCredit()) : 0
     }
 }
