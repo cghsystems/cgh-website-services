@@ -27,7 +27,7 @@ class PDFDividendSummaryWidget {
         PdfPTable d = new PdfPTable(false, 1)
         d.addCell("${dividend.dateHeld}")
         d.addCell("${dividend.director.name}")
-        d.addCell("${dividend.company.registeredOffice}")
+        d.addCell("${dividend.company.address}")
 
         summaryTable.addCell(t)
         summaryTable.addCell(d)

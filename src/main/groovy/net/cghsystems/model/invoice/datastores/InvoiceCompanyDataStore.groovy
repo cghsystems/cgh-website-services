@@ -1,5 +1,6 @@
 package net.cghsystems.model.invoice.datastores
 
+import net.cghsystems.model.Contact
 import net.cghsystems.model.datastores.AddressDataStore
 import net.cghsystems.model.datastores.BankDetailsDataStore
 import net.cghsystems.model.invoice.InvoiceCompany
@@ -19,13 +20,15 @@ class InvoiceCompanyDataStore {
 
             def registeredOffice = getAddress(companyId)
             def bankDetails = getBankDetails(companyId)
+            def contact = new Contact(name: "Christopher Hedley")
 
-            return new InvoiceCompany(bankDetails: bankDetails,
-            companyNumber: companyNumber,
-            created: new Date(),
-            name: name,
-            address: registeredOffice,
-            vatNumber: vatNumber)
+            new InvoiceCompany(bankDetails: bankDetails,
+                    companyNumber: companyNumber,
+                    created: new Date(),
+                    name: name,
+                    address: registeredOffice,
+                    vatNumber: vatNumber,
+                    contact: contact)
         }
     }
 }

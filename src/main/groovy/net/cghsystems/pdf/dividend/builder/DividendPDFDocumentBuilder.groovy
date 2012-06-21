@@ -44,21 +44,33 @@ class DividendPDFDocumentBuilder implements PDFDocumentBuilder<DividendDeclarati
      */
     public void generate(DividendDeclaration declaration, OutputStream pdfOutputStream) {
 
+        bounceArgsIfNullOrInvalid(declaration, pdfOutputStream)
+
         def output = PdfWriter.getInstance(doc, pdfOutputStream)
         doc.open()
 
         addHeader(declaration.company)
         addTitle()
         doc.addLineBreak()
-        buildDividendSummary(declaration)
-        buildMeetingDescription()
-        buildDistributionDetails(declaration)
+        doc.add(buildDividendSummary(declaration))
+        doc.add(buildMeetingDescription())
+        doc.add(buildDistributionDetails(declaration))
         doc.addLineBreak()
-        buildPaymentDetails(declaration)
+        buildPaymentDetails(doc, declaration)
         10.times { doc.newLine() }
         buildFooter()
 
         doc.close()
+    }
+
+    private bounceArgsIfNullOrInvalid(declaration, pdfOutputStream) {
+        if(declaration == null || pdfOutputStream == null) {
+            throw new IllegalStateException("Cannot accept a null parameter")
+        }
+
+        if(!declaration.isValid()) {
+            throw new IllegalStateException("DividendDeclarationis in an invalid State: ${declaration.isValid().message}")
+        }
     }
 
     void addHeader(company) {

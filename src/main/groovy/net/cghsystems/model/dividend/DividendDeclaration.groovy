@@ -21,7 +21,9 @@ import net.cghsystems.model.Contact
 @Validateable(ValidatableReturnTypes.NOT_VALID_FOR_INVALID)
 class DividendDeclaration {
 
+    /** The date of the meeting that the dividend was decided at */
     String dateHeld
+    /** Comapny the dividend is to be paid for */
     Company company
     Contact director
     BigDecimal dividend
