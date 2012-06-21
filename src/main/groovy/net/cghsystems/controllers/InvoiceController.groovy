@@ -45,7 +45,7 @@ class InvoiceController {
     @RequestMapping(value = "/document/{id}", method = RequestMethod.GET)
     def getInvoiceDocument(@PathVariable("id") documentId) {
         log.info("Received request for Invoice Document with Id: ${documentId}")
-        return "test".bytes
+        "test".bytes
     }
 
     /**
