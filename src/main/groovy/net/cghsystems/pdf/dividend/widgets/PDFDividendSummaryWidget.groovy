@@ -5,15 +5,16 @@ import net.cghsystems.pdf.shared.PDFDocumentConstants
 
 import com.itextpdf.text.pdf.PdfPTable
 
-class PDFDividendSummaryBuilder {
 
-    def build(DividendDeclaration dividend) {
+class PDFDividendSummaryWidget {
+
+    def buildDividendSummary(DividendDeclaration dividend) {
         PdfPTable summary = buildSummaryColumn(dividend)
         return summary
     }
 
 
-    def buildSummaryColumn(DividendDeclaration dividend) {
+    private def buildSummaryColumn(DividendDeclaration dividend) {
 
         PdfPTable summaryTable = new PdfPTable(false, 2)
         summaryTable.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)

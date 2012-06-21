@@ -8,9 +8,9 @@ import net.cghsystems.model.dividend.DividendDeclaration
 import com.itextpdf.text.pdf.PdfPTable
 
 
-class PDFDistributionDetailsBuilder {
+class PDFDistributionDetailsWidget {
 
-    def build(DividendDeclaration dividend) {
+    def buildDistributionDetails(DividendDeclaration dividend) {
 
         PdfPTable summaryTable = new PdfPTable(false, 2)
 

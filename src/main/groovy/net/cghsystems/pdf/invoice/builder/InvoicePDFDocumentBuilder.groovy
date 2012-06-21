@@ -10,8 +10,6 @@ import net.cghsystems.pdf.invoice.widgets.InvoiceSummaryWidget
 import net.cghsystems.pdf.shared.builder.PDFDocumentBuilder
 
 import com.itextpdf.text.Document
-import com.itextpdf.text.Paragraph
-import com.itextpdf.text.pdf.PdfPTable
 import com.itextpdf.text.pdf.PdfWriter
 
 
@@ -29,6 +27,7 @@ import com.itextpdf.text.pdf.PdfWriter
 @Mixin(InvoicePaymentSummaryWidgetProvider)
 @Mixin(InvoicePeriodWidgetProvider)
 @Mixin(InvoiceHeaderWidget)
+@Mixin(InvoiceSummaryWidget)
 class InvoicePDFDocumentBuilder implements PDFDocumentBuilder<Invoice> {
 
     /** The itext 'canvas' to create the pdf within */
@@ -68,13 +67,5 @@ class InvoicePDFDocumentBuilder implements PDFDocumentBuilder<Invoice> {
         doc.addKeywords("Invoice for Christopher Hedley")
         doc.addAuthor("cgh-systems")
         doc.addCreator("cgh-systems")
-    }
-
-    /** Could add into its own mixin provider */
-    private buildInvoiceSummary(invoice) {
-        PdfPTable summaryTable = new InvoiceSummaryWidget().build(invoice)
-        Paragraph section = new Paragraph()
-        section.add(summaryTable)
-        section
     }
 }

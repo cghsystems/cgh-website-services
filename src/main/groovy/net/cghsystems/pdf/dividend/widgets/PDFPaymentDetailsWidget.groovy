@@ -11,9 +11,9 @@ import com.itextpdf.text.Paragraph
 import com.itextpdf.text.pdf.PdfPTable
 
 
-class PDFPaymentDetailsBuilder {
+class PDFPaymentDetailsWidget {
 
-    def build(Document doc, DividendDeclaration dividend) {
+    def buildPaymentDetails(Document doc, DividendDeclaration dividend) {
 
         addTitle(doc)
         doc.newLine()
@@ -22,7 +22,7 @@ class PDFPaymentDetailsBuilder {
         addFooter(doc)
     }
 
-    void addFooter(doc) {
+    private void addFooter(doc) {
         def text =
                 """
 			The shareholders were advised of these amounts and cheques paid/drawn accordingly.
@@ -34,7 +34,7 @@ class PDFPaymentDetailsBuilder {
         doc.add(footer)
     }
 
-    void addPaymentTable(doc, dividend) {
+    private  void addPaymentTable(doc, dividend) {
 
         PdfPTable table = new PdfPTable(false, 4)
         table.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)
@@ -52,7 +52,7 @@ class PDFPaymentDetailsBuilder {
         doc.add(table)
     }
 
-    void addTitle(doc) {
+    private void addTitle(doc) {
         Font font = FontFactory.getFont(FontFactory.HELVETICA, 10)
         Paragraph title = new Paragraph("Payment Details", font)
         title.setAlignment(Element.ALIGN_CENTER)

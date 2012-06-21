@@ -1,11 +1,11 @@
-package net.cghsystems.pdf.builder
+package net.cghsystems.pdf.dividend.builder
 
 import net.cghsystems.model.dividend.DividendDeclaration
-import net.cghsystems.pdf.dividend.builder.PDFDividendMeetingDescriptionBuilder;
-import net.cghsystems.pdf.dividend.widgets.PDFDistributionDetailsBuilder
-import net.cghsystems.pdf.dividend.widgets.PDFDividendSummaryBuilder
-import net.cghsystems.pdf.dividend.widgets.PDFPaymentDetailsBuilder
-import net.cghsystems.pdf.dividend.widgets.PDFSignatureFooterBuilder
+import net.cghsystems.pdf.dividend.widgets.PDFDistributionDetailsWidget
+import net.cghsystems.pdf.dividend.widgets.PDFDividendMeetingDescriptionWidget
+import net.cghsystems.pdf.dividend.widgets.PDFDividendSummaryWidget
+import net.cghsystems.pdf.dividend.widgets.PDFPaymentDetailsWidget
+import net.cghsystems.pdf.dividend.widgets.PDFSignatureFooterWidget
 import net.cghsystems.pdf.shared.builder.PDFDocumentBuilder
 import net.cghsystems.pdf.shared.widgets.HeaderWidget
 
@@ -29,6 +29,11 @@ import com.itextpdf.text.pdf.PdfWriter
  *
  * Uses lots of Mixin's so basically multiple inheritance. Is this bad? I've yet to decide...
  */
+@Mixin(PDFDividendSummaryWidget)
+@Mixin(PDFDividendMeetingDescriptionWidget)
+@Mixin(PDFDistributionDetailsWidget)
+@Mixin(PDFPaymentDetailsWidget)
+@Mixin(PDFSignatureFooterWidget)
 class DividendPDFDocumentBuilder implements PDFDocumentBuilder<DividendDeclaration> {
 
     /** The itext 'canvas' to create the pdf within */
@@ -44,14 +49,14 @@ class DividendPDFDocumentBuilder implements PDFDocumentBuilder<DividendDeclarati
 
         addHeader(declaration.company)
         addTitle()
-        doc.newLine()
-        addDividendSummary(declaration)
-        addMeetingDescription(declaration)
-        addDistributionDetails(declaration)
-        doc.newLine()
-        addPaymentDetails(declaration)
+        doc.addLineBreak()
+        buildDividendSummary(declaration)
+        buildMeetingDescription()
+        buildDistributionDetails(declaration)
+        doc.addLineBreak()
+        buildPaymentDetails(declaration)
         10.times { doc.newLine() }
-        addSignatureFooter()
+        buildFooter()
 
         doc.close()
     }
@@ -65,25 +70,5 @@ class DividendPDFDocumentBuilder implements PDFDocumentBuilder<DividendDeclarati
         Paragraph title = new Paragraph("Dividend Declaration")
         title.setAlignment(Element.ALIGN_CENTER)
         doc.add(title)
-    }
-
-    void addDividendSummary(declaration) {
-        doc.add(new PDFDividendSummaryBuilder().build(declaration))
-    }
-
-    void addMeetingDescription(declaration) {
-        doc.add(new PDFDividendMeetingDescriptionBuilder().build())
-    }
-
-    void addDistributionDetails(declaration) {
-        doc.add(new PDFDistributionDetailsBuilder().build(declaration))
-    }
-
-    void addPaymentDetails(declaration) {
-        new PDFPaymentDetailsBuilder().build(doc, declaration)
-    }
-
-    void addSignatureFooter() {
-        doc.add(new PDFSignatureFooterBuilder().build())
     }
 }

@@ -1,8 +1,8 @@
 package net.cghsystems.pdf.invoice.widgets
 
 import net.cghsystems.model.Address
-import net.cghsystems.model.invoice.InvoiceCompany;
-import net.cghsystems.pdf.shared.PDFDocumentConstants;
+import net.cghsystems.model.invoice.InvoiceCompany
+import net.cghsystems.pdf.shared.PDFDocumentConstants
 
 import com.itextpdf.text.Font
 import com.itextpdf.text.pdf.PdfPTable
@@ -28,7 +28,7 @@ class InvoiceHeaderWidget {
         return header
     }
 
-    void addAddressToColumn(Address address, PdfPTable column) {
+    private void addAddressToColumn(Address address, PdfPTable column) {
         def closure = { column.addCell(it) }
         address.buildAddress(closure, address)
     }

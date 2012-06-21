@@ -3,14 +3,22 @@ package net.cghsystems.pdf.invoice.widgets
 import net.cghsystems.model.invoice.Invoice
 import net.cghsystems.model.Company
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.pdf.shared.PDFDocumentConstants;
+import net.cghsystems.pdf.shared.PDFDocumentConstants
 
+import com.itextpdf.text.Paragraph
 import com.itextpdf.text.pdf.PdfPTable
 
 
 class InvoiceSummaryWidget {
 
-    def build(Invoice invoice) {
+    def buildInvoiceSummary(Invoice invoice) {
+        PdfPTable summaryTable = build(invoice)
+        Paragraph section = new Paragraph()
+        section.add(summaryTable)
+        section
+    }
+
+    private def build(Invoice invoice) {
 
         PdfPTable col1 = buildLeftHandSummaryColumn(invoice.invoiceClient)
         PdfPTable col2 = buildRightHandSummaryColumn(invoice)
@@ -24,7 +32,7 @@ class InvoiceSummaryWidget {
         return mainTable
     }
 
-    def buildLeftHandSummaryColumn(Company invoiceClient) {
+    private def buildLeftHandSummaryColumn(Company invoiceClient) {
 
         PdfPTable a = new PdfPTable(false, 1)
         a.addCell("Invoice to:")
@@ -38,7 +46,7 @@ class InvoiceSummaryWidget {
         return col
     }
 
-    void addCounterpartAddressToColumn(Company cpty, PdfPTable column) {
+    private void addCounterpartAddressToColumn(Company cpty, PdfPTable column) {
         column.addCell(cpty.name)
         column.addCell(cpty.address.line1)
         column.addCell(cpty.address.line2)
@@ -46,7 +54,7 @@ class InvoiceSummaryWidget {
         column.addCell(cpty.address.postcode)
     }
 
-    def buildRightHandSummaryColumn(Invoice invoice) {
+    private def buildRightHandSummaryColumn(Invoice invoice) {
 
         PdfPTable col2 = new PdfPTable(false, 2)
 

@@ -5,9 +5,9 @@ import net.cghsystems.pdf.shared.PDFDocumentConstants
 
 import com.itextpdf.text.pdf.PdfPTable
 
-class PDFSignatureFooterBuilder {
+class PDFSignatureFooterWidget {
 
-    def build() {
+    def buildFooter() {
 
         PdfPTable table = new PdfPTable(false, 2)
         table.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)

@@ -1,7 +1,7 @@
 package net.cghsystems.pdf.invoice.widgets
 
 import net.cghsystems.model.invoice.Invoice
-import net.cghsystems.pdf.shared.PDFDocumentConstants;
+import net.cghsystems.pdf.shared.PDFDocumentConstants
 
 import com.itextpdf.text.Paragraph
 import com.itextpdf.text.pdf.PdfPTable
@@ -11,6 +11,10 @@ import com.itextpdf.text.pdf.PdfPTable
 @Category(Object)
 class InvoicePaymentSummaryWidgetProvider {
 
+    /**
+     * @param invoice
+     * @return
+     */
     def buildInvoicePaymentSummaryWidget(Invoice invoice) {
         Paragraph paragraph = new Paragraph()
 
@@ -19,6 +23,10 @@ class InvoicePaymentSummaryWidgetProvider {
         return paragraph
     }
 
+    /**
+     * @param paragraph
+     * @param invoice
+     */
     void addPaymentSummaryToParagraph(Paragraph paragraph, Invoice invoice) {
 
         PdfPTable leftColumn = new PdfPTable(false, 1)
