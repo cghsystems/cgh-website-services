@@ -11,10 +11,12 @@ import com.itextpdf.text.Rectangle
 import com.itextpdf.text.pdf.PdfPCell
 import com.itextpdf.text.pdf.PdfPTable
 
-@Category(Object)
 class InvoicePeriodWidgetProvider {
 
     def buildInvoicePeriodWidget(Invoice invoice) {
+
+        bounceInvoiceIfInValid(invoice)
+
         PdfPTable main = new PdfPTable(false, 4)
         main.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)
         main.addCell("Description:")
@@ -54,5 +56,15 @@ class InvoicePeriodWidgetProvider {
         main.addCell("£ ${fmt.format(invoice.invoiceCalculation.total())}", Font.BOLD)
 
         return main
+    }
+
+    private bounceInvoiceIfInValid(Invoice invoice) {
+        if(!invoice.isValid()) {
+            throw new IllegalStateException("Invoice Object is NotValid: ${invoice.isValid().message}")
+        }
+
+        if(!invoice.invoiceCalculation.isValid()) {
+            throw new IllegalStateException("Invoice Object is NotValid: ${invoice.invoiceCalculation.isValid().message}")
+        }
     }
 }

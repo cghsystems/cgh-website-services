@@ -1,8 +1,12 @@
 package net.cghsystems.model.invoice
 
+import net.cghsystems.groovy.transform.Validateable
+import net.cghsystems.groovy.transform.Validateable.ValidatableReturnTypes
+
 /**
  * The domain object representing the totals that are displayed on the invoice 
  */
+@Validateable(ValidatableReturnTypes.NOT_VALID_FOR_INVALID)
 class InvoiceCalculation {
     Integer days
     Double rate
@@ -22,6 +26,7 @@ class InvoiceCalculation {
     }
 
     BigDecimal totalNoVat() {
+        rate = rate ? rate : 0
         BigDecimal res = new BigDecimal(rate)
         res.multiply(days)
     }

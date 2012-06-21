@@ -21,6 +21,25 @@ class InvoiceCalculationTest {
     }
 
     @Test
+    void isValid() {
+        unit.isValid() == true
+    }
+
+    @Test
+    void isNotValid() {
+        unit = new InvoiceCalculation()
+        assert "The following fields have not been build correctly:  days, vat, rate" == unit.isValid().message
+    }
+
+    @Test
+    void shouldHandleNullRateGracefully() {
+        unit.rate = null
+        unit.totalNoVat() == 0
+        unit.vatOfTotal() == 0
+        unit.total() == 0
+    }
+
+    @Test
     void shouldCalculateTotalNoVat() {
         assertEquals(8000.0, unit.totalNoVat(), 0)
     }
