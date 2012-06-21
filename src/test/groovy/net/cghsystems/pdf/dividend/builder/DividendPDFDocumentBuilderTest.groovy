@@ -2,7 +2,7 @@ package net.cghsystems.pdf.dividend.builder
 
 import static org.junit.Assert.*
 import net.cghsystems.model.dividend.DividendDeclaration
-import net.cghsystems.model.dividend.DividendDeclarationBuilder
+import net.cghsystems.model.dividend.datastores.DividendDeclarationDataStore;
 import net.cghsystems.model.invoice.datastores.InvoiceDataStoreCompanyIds
 import net.cghsystems.pdf.itext.ItextMetaClassesRegistrar
 
@@ -24,7 +24,7 @@ class DividendPDFDocumentBuilderTest {
     @Before
     void before() {
         unit = new DividendPDFDocumentBuilder()
-        dividend = new DividendDeclarationBuilder().createDividend(new Date(), 100, InvoiceDataStoreCompanyIds.CGH)
+        dividend = new DividendDeclarationDataStore().createDividend(new Date(), 100, InvoiceDataStoreCompanyIds.CGH)
     }
 
     @Test(expected = IllegalStateException)
