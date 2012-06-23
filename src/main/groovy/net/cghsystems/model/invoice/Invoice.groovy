@@ -1,5 +1,6 @@
 package net.cghsystems.model.invoice
 
+import groovy.transform.ToString
 import net.cghsystems.groovy.transform.Validateable
 import net.cghsystems.groovy.transform.Validateable.ValidatableReturnTypes
 import net.cghsystems.model.Company
@@ -10,6 +11,7 @@ import net.cghsystems.model.Company
  * order for it to be rendered to a view.
  */
 @Validateable(ValidatableReturnTypes.NOT_VALID_FOR_INVALID)
+@ToString
 class Invoice {
     int number
     String description, taxPointDate, fromDate, toDate

@@ -1,14 +1,14 @@
 package net.cghsystems.model.invoice.datastores
 
 import net.cghsystems.model.Address
+import net.cghsystems.model.Company
 import net.cghsystems.model.Contact
-import net.cghsystems.model.Company;
 
 
 @Category(Object)
 class InvoiceClientDataStore {
 
-    Company getInvoiceClient(Long clientId) {
+    Company getInvoiceClient(clientId) {
         if(clientId == InvoiceDataStoreCompanyIds.DATA_INC) {
             def add = new Address(line1: "4 Winnersh Fields",
                     town: "Winnersh",
@@ -23,7 +23,7 @@ class InvoiceClientDataStore {
         }
     }
 
-    def getInvoiceDescription(Long companyId, Long clientId) {
+    def getInvoiceDescription(companyId, clientId) {
         if(companyId == InvoiceDataStoreCompanyIds.CGH && companyId == InvoiceDataStoreCompanyIds.DATA_INC) {
             "For professional services of consultant, working for Data Inc UK Ltd at your client UBS."
         }
