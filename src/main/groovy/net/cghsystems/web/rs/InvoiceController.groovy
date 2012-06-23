@@ -1,8 +1,8 @@
 package net.cghsystems.web.rs
 
 import groovy.util.logging.Log4j
+import net.cghsystems.model.invoice.builders.InvoiceBuilder
 import net.cghsystems.model.invoice.builders.InvoiceParameters
-import net.cghsystems.web.rs.InvoiceBadRequestException;
 
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
@@ -69,8 +69,9 @@ class InvoiceController {
                 fromDate: "12/12/2012", taxPointDate: "12/12/2012")
 
         if(i.isValid() == true) {
-            log.info("Returning new Invoice: ${i}")
-            return i
+            def invoice = new InvoiceBuilder().createInvoice(i)
+            log.info("Created invoice ${invoice}")
+            return invoice
         }else {
             log.error("Could not create valid Invoice: ${i.isValid().message}")
             throw new InvoiceBadRequestException(i.isValid().message)

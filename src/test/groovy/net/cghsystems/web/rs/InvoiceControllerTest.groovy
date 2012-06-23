@@ -25,7 +25,7 @@ class InvoiceControllerTest {
     @Test
     void shouldGenerateInvoiceWithValidParameters() {
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
-                .perform(get("/invoice/create/{companyId}/{clientId}/{days}", 1,2,3))
+                .perform(get("/invoice/create/{companyId}/{clientId}/{days}", 1,1,1))
                 .andExpect(status().isCreated())
     }
 
