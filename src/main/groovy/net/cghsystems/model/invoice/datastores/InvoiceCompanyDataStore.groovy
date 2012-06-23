@@ -24,7 +24,7 @@ class InvoiceCompanyDataStore {
 
             new InvoiceCompany(bankDetails: bankDetails,
                     companyNumber: companyNumber,
-                    created: new Date(),
+                    created: null,
                     name: name,
                     address: registeredOffice,
                     vatNumber: vatNumber,
