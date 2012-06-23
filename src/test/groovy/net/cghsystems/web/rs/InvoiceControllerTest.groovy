@@ -27,7 +27,6 @@ class InvoiceControllerTest {
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
                 .perform(get("/invoice/create/{companyId}/{clientId}/{days}", 1,1,34))
                 .andExpect(status().isCreated())
-        throw null //TEst the Invoice return type
     }
 
     @Test
