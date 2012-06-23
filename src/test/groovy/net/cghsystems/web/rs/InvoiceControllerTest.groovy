@@ -1,11 +1,11 @@
 
-package net.cghsystems.controllers
+package net.cghsystems.web.rs
 
 import static org.junit.Assert.*
 import static org.springframework.test.web.server.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.server.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.server.result.MockMvcResultMatchers.*
-import net.cghsystems.controllers.ioc.InvoiceControllersApplicationContext
+import net.cghsystems.web.rs.ioc.InvoiceControllersApplicationContext
 
 import org.junit.Test
 import org.springframework.test.web.server.setup.MockMvcBuilders
@@ -17,18 +17,23 @@ class InvoiceControllerTest {
     void shouldGetInvoiceDocument() {
         def pdfByteArray = "test"
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
-                .perform(get("/invoice/document/{id}", 1)).andExpect(status().isOk()).andExpect(content().string(pdfByteArray))
+                .perform(get("/invoice/document/{id}", 1))
+                .andExpect(status().isOk())
+                .andExpect(content().string(pdfByteArray))
     }
 
     @Test
     void shouldGenerateInvoiceWithValidParameters() {
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
-                .perform(post("/invoice/create/{invoiceParameters}", 1)).andExpect(status().isOk()).andExpect(content().string("test"))
+                .perform(get("/invoice/create/{companyId}/{clientId}/{days}", 1,2,3))
+                .andExpect(status().isCreated())
     }
 
     @Test
     void shouldSendEmailWithValidInvoiceId() {
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
-                .perform(post("/invoice/email/{invoiceId}", 1)).andExpect(status().isOk()).andExpect(content().string("test"))
+                .perform(get("/invoice/email/{invoiceId}", 1))
+                .andExpect(status().isOk())
+                .andExpect(content().string("test"))
     }
 }

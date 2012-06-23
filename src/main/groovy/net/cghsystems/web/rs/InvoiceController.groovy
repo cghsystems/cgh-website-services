@@ -1,7 +1,10 @@
-package net.cghsystems.controllers
+package net.cghsystems.web.rs
 
 import groovy.util.logging.Log4j
+import net.cghsystems.model.invoice.builders.InvoiceParameters
+import net.cghsystems.web.rs.InvoiceBadRequestException;
 
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
 import org.springframework.web.HttpMediaTypeNotAcceptableException
 import org.springframework.web.bind.annotation.ExceptionHandler
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.bind.annotation.ResponseStatus
 
 /**
  * Uses Springs REST support to serve up the data required to do all things invoice related. Such as creating invoices, returning 
@@ -53,10 +57,24 @@ class InvoiceController {
      * @return TODO
      */
     @ResponseBody
-    @RequestMapping(value = "/create/{invoiceParameters}", method = RequestMethod.POST)
-    def generateInvoice(@PathVariable('invoiceParameters') invoiceParameters) {
-        log.info("Received request to create new Invoice with parameters: ${invoiceParameters }")
-        "test"
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value = "/create/{companyId}/{clientId}/{days}", method = RequestMethod.GET)
+    def generateInvoice(@PathVariable("clientId") clientId,
+    @PathVariable("companyId") companyId, @PathVariable("days") days) {
+
+        log.info("Received request to create new Invoice for company: ${companyId}")
+
+        def  i = new InvoiceParameters(clientId: clientId,
+                companyId: companyId, days: days, toDate: "12/12/2012",
+                fromDate: "12/12/2012", taxPointDate: "12/12/2012")
+
+        if(i.isValid() == true) {
+            log.info("Returning new Invoice: ${i}")
+            return i
+        }else {
+            log.error("Could not create valid Invoice: ${i.isValid().message}")
+            throw new InvoiceBadRequestException(i.isValid().message)
+        }
     }
 
     /**
@@ -66,14 +84,14 @@ class InvoiceController {
      * @return TODO
      */
     @ResponseBody
-    @RequestMapping(value = "/email/{invoiceId}", method = RequestMethod.POST)
-    def sendInvoiceToReceipients(@PathVariable("invoiceId") invoiceId) {
+    @RequestMapping(value = "/email/{invoiceId}", method = RequestMethod.GET)
+    def sendInvoiceToReceipients( @PathVariable("invoiceId") invoiceId  ) {
         log.info("Recieved request to send email for invoice ${invoiceId}")
         "test"
     }
 
     @ExceptionHandler(HttpMediaTypeNotAcceptableException)
     void handle(e) {
-        e.printStackTrace
+        e.printStackTrace()
     }
 }

@@ -24,12 +24,12 @@ class InvoiceBuilderTest {
     void shoudlReturnInValidAsInvoiceParametersIsPoorlyFormed() {
         final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH)
         println unit.createInvoice(params).getMessage()
-        assert unit.createInvoice(params).getMessage() == "The following fields have not been build correctly:  days, clientId, number"
+        assert unit.createInvoice(params).getMessage() == "The following fields have not been set correctly:  days, clientId"
     }
 
     @Test
     void shouldReturnInvoiceAsInvoiceParametersIsCorrectlyFormed() {
-        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012", number: 400,  taxPointDate: "12/12/2001", toDate: "12/12/2005"  )
+        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012", taxPointDate: "12/12/2001", toDate: "12/12/2005"  )
         Invoice actual = unit.createInvoice(params)
         assert actual instanceof Invoice
         assert actual.isValid() == true
@@ -37,19 +37,19 @@ class InvoiceBuilderTest {
 
     @Test(expected  = ParseException)
     void shouldThrowExcetpionIfFromDateIsInValidFormat() {
-        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/dd/2012", number: 400,  taxPointDate: "12/12/2001", toDate: "12/12/2005"  )
+        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/dd/2012", taxPointDate: "12/12/2001", toDate: "12/12/2005"  )
         unit.createInvoice(params)
     }
 
     @Test(expected  = ParseException)
     void shouldThrowExcetpionIfToDateIsInValidFormat() {
-        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012", number: 400,  taxPointDate: "12/12/2001", toDate: "12/mm/2005"  )
+        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012", taxPointDate: "12/12/2001", toDate: "12/mm/2005"  )
         unit.createInvoice(params)
     }
 
     @Test(expected  = ParseException)
     void shouldThrowExcetpionIfTaxPointDateIsInValidFormat() {
-        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012", number: 400,  taxPointDate: "1223/1212/sss", toDate: "12/12/2005"  )
+        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012", taxPointDate: "1223/1212/sss", toDate: "12/12/2005"  )
         unit.createInvoice(params)
     }
 }

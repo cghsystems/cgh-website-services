@@ -1,6 +1,8 @@
 package net.cghsystems.model.invoice.builders
 
 
+import groovy.transform.ToString
+
 import java.text.SimpleDateFormat
 
 import net.cghsystems.groovy.transform.Validateable
@@ -16,11 +18,12 @@ import net.cghsystems.groovy.transform.Validateable.ValidatableReturnTypes
  * 
  */
 @Validateable(ValidatableReturnTypes.NOT_VALID_FOR_INVALID)
+@ToString
 class InvoiceParameters {
 
     private final SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy")
 
-    def companyId, clientId, days, toDate, number, taxPointDate
+    def companyId, clientId, days, toDate, taxPointDate
     String fromDate
 
     def getFromDate() {

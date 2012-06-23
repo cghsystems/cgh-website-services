@@ -28,7 +28,7 @@ class InvoiceCalculationTest {
     @Test
     void isNotValid() {
         unit = new InvoiceCalculation()
-        assert "The following fields have not been build correctly:  days, vat, rate" == unit.isValid().message
+        assert "The following fields have not been set correctly:  days, vat, rate" == unit.isValid().message
     }
 
     @Test

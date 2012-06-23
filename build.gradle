@@ -1,5 +1,7 @@
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
+apply plugin: 'war'
+apply plugin: 'jetty'
 
 final String SPRING_VERSION = '3.1.0.RELEASE'
 final String SPRING_INTEGRATION_VERSION = '2.1.1.RELEASE'

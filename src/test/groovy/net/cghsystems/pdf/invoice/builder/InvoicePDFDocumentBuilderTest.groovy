@@ -5,7 +5,6 @@ import net.cghsystems.model.invoice.Invoice
 import net.cghsystems.model.invoice.builders.InvoiceBuilder
 import net.cghsystems.model.invoice.builders.InvoiceParameters
 import net.cghsystems.model.invoice.datastores.InvoiceDataStoreCompanyIds
-import net.cghsystems.pdf.invoice.builder.InvoicePDFDocumentBuilder;
 import net.cghsystems.pdf.itext.ItextMetaClassesRegistrar
 
 import org.junit.Before
@@ -29,7 +28,7 @@ class InvoicePDFDocumentBuilderTest {
     @Before
     void before() {
         unit = new InvoicePDFDocumentBuilder()
-        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012", number: 400,  taxPointDate: "12/12/2001", toDate: "12/12/2005")
+        final params = new InvoiceParameters(companyId: InvoiceDataStoreCompanyIds.CGH, clientId: 1, days: 1,fromDate: "12/12/2012",  taxPointDate: "12/12/2001", toDate: "12/12/2005")
         invoice = new InvoiceBuilder().createInvoice(params)
     }
 

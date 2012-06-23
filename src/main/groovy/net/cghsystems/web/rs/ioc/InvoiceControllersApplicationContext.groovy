@@ -1,9 +1,11 @@
-package net.cghsystems.controllers.ioc
+package net.cghsystems.web.rs.ioc
 
-import net.cghsystems.controllers.InvoiceController
+
+import net.cghsystems.web.rs.InvoiceController
 
 import org.springframework.beans.factory.annotation.Configurable
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ImportResource
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
 
 
@@ -20,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc
  */
 @Configurable
 @EnableWebMvc
+@ImportResource("classpath:test-context.xml")
 public class InvoiceControllersApplicationContext  {
 
     @Bean

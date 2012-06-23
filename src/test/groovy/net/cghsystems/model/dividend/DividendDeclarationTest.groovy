@@ -28,6 +28,6 @@ class DividendDeclarationTest {
     @Test
     void isValid() {
         DividendDeclaration unit = new DividendDeclaration()
-        assert "The following fields have not been build correctly:  director, dateHeld, company, dividend" ==  unit.isValid().message
+        assert "The following fields have not been set correctly:  director, dateHeld, company, dividend" ==  unit.isValid().message
     }
 }
