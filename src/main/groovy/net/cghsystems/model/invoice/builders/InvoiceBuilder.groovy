@@ -23,6 +23,8 @@ class InvoiceBuilder {
     def createInvoice(InvoiceParameters params) {
         if(params.isValid()==true) {
 
+            log.trace("Creating Invoice with Invoice Parameters with ${params}")
+
             def invoiceCompany = getInvoiceCompany(params.companyId)
             def invoiceClient =  getInvoiceClient(params.clientId)
             def invoiceDescription = getInvoiceDescription(params.companyId, params.clientId)

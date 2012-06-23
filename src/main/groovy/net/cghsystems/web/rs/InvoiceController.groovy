@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
  * {@code MappingJacksonJsonView} via the application context. See {@link InvoiceControllersApplicationContext} 
  *
  */
+@Mixin(InvoiceBuilder)
 @Controller
 @RequestMapping("/invoice")
 @Log4j
@@ -69,7 +70,7 @@ class InvoiceController {
                 fromDate: "12/12/2012", taxPointDate: "12/12/2012")
 
         if(i.isValid() == true) {
-            def invoice = new InvoiceBuilder().createInvoice(i)
+            def invoice = createInvoice(i)
             log.info("Created invoice ${invoice}")
             return invoice
         }else {
