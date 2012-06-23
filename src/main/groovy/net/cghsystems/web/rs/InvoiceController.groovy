@@ -60,8 +60,8 @@ class InvoiceController {
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/create/{companyId}/{clientId}/{days}", method = RequestMethod.GET)
-    def generateInvoice(@PathVariable("clientId") clientId,
-    @PathVariable("companyId") companyId, @PathVariable("days") days) {
+    def generateInvoice(@PathVariable("clientId") Long clientId,
+    @PathVariable("companyId") Long companyId, @PathVariable("days") Integer days) {
 
         log.info("Received request to create new Invoice for company: ${companyId}")
 
