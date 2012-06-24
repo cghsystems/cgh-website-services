@@ -45,6 +45,13 @@ class InvoiceControllerTest {
     }
 
     @Test
+    void shouldGetBadRequestWithInvalidParameters() {
+        MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
+                .perform(get("/invoice/create/{companyId}/{clientId}/{days}", "dave",1,2))
+                .andExpect(status().isBadRequest())
+    }
+
+    @Test
     void shouldSendEmailWithValidInvoiceId() {
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
                 .perform(get("/invoice/email/{invoiceId}", 1))
