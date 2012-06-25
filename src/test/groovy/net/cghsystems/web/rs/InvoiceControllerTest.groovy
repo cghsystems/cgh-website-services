@@ -41,13 +41,16 @@ class InvoiceControllerTest {
 
         def matcher = new ResultMatcher() {
                     public void match(MvcResult result) throws Exception {
-                        MatcherAssert.assertThat("Response content", result.getResponse().getContentLength() == 100 )
+                        final actual = result.getResponse().getContentLength()
+                        final expected = 1776
+                        MatcherAssert.assertThat("Response content length ${actual} was not expected length ${expected}", expected == actual)
                     }
                 }
 
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
                 .perform(post("/invoice/document/", invoiceJson).contentType(MediaType.APPLICATION_JSON).body(invoiceJson.bytes))
                 .andExpect(status().isOk())
+                .andExpect(matcher)
     }
 
     @Test

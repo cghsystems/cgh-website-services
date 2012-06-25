@@ -24,7 +24,6 @@ class InvoiceHeaderWidget {
         header.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)
 
         header.addCell(nameCol)
-        header.addCell(addressCol)ã
         return header
     }
 

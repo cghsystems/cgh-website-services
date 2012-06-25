@@ -100,5 +100,6 @@ class InvoiceController {
     @ExceptionHandler(Exception)
     void handle(e) {
         e.printStackTrace()
+        throw e
     }
 }
