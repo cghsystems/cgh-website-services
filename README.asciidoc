@@ -1,6 +1,6 @@
 == cgh-website-services
 
 The back end services of the http://www.cghsystems.net[CGH Systems] website. This project includes
- - The Domain models for creating Invoices and Dividend
- - Services for generating PDF documents
- - A Rest API to create PDF documents and new Invoice information.
+  - The Domain models for creating Invoices and Dividend
+  - Services for generating PDF documents
+  - A Rest API to create PDF documents and new Invoice information.
