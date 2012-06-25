@@ -1,4 +1,6 @@
 
+
+
 package net.cghsystems.web.rs
 
 import static org.junit.Assert.*
@@ -7,23 +9,45 @@ import static org.springframework.test.web.server.request.MockMvcRequestBuilders
 import static org.springframework.test.web.server.result.MockMvcResultMatchers.*
 import net.cghsystems.model.invoice.builders.InvoiceBuilder
 import net.cghsystems.model.invoice.builders.InvoiceParameters
+import net.cghsystems.pdf.itext.ItextMetaClassesRegistrar
 import net.cghsystems.web.rs.ioc.InvoiceControllersApplicationContext
 
 import org.codehaus.jackson.map.ObjectMapper
+import org.hamcrest.MatcherAssert
+import org.junit.BeforeClass
 import org.junit.Test
+import org.springframework.http.MediaType
+import org.springframework.test.web.server.MvcResult
+import org.springframework.test.web.server.ResultMatcher
 import org.springframework.test.web.server.setup.MockMvcBuilders
 
 @Mixin(ObjectMapper)
 @Mixin(InvoiceBuilder)
 class InvoiceControllerTest {
 
+    @BeforeClass
+    static void beforeClass() {
+        ItextMetaClassesRegistrar.register()
+    }
+
     @Test
     void shouldGetInvoiceDocument() {
-        def pdfByteArray = "test"
+
+        final  invoiceParameters = new InvoiceParameters(clientId: 1,
+                companyId: 1, days: 12, toDate: "12/12/2012",
+                fromDate: "12/12/2012", taxPointDate: "12/12/2012")
+        final invoice = createInvoice(invoiceParameters)
+        final invoiceJson = writeValueAsString(invoice)
+
+        def matcher = new ResultMatcher() {
+                    public void match(MvcResult result) throws Exception {
+                        MatcherAssert.assertThat("Response content", result.getResponse().getContentLength() == 100 )
+                    }
+                }
+
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
-                .perform(get("/invoice/document/{id}", 1))
+                .perform(post("/invoice/document/", invoiceJson).contentType(MediaType.APPLICATION_JSON).body(invoiceJson.bytes))
                 .andExpect(status().isOk())
-                .andExpect(content().string(pdfByteArray))
     }
 
     @Test

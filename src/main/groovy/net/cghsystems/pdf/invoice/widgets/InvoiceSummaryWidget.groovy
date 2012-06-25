@@ -18,7 +18,7 @@ class InvoiceSummaryWidget {
         section
     }
 
-    private def build(Invoice invoice) {
+    def build(Invoice invoice) {
 
         PdfPTable col1 = buildLeftHandSummaryColumn(invoice.invoiceClient)
         PdfPTable col2 = buildRightHandSummaryColumn(invoice)
@@ -32,7 +32,7 @@ class InvoiceSummaryWidget {
         return mainTable
     }
 
-    private def buildLeftHandSummaryColumn(Company invoiceClient) {
+    def buildLeftHandSummaryColumn(Company invoiceClient) {
 
         PdfPTable a = new PdfPTable(false, 1)
         a.addCell("Invoice to:")
@@ -46,7 +46,7 @@ class InvoiceSummaryWidget {
         return col
     }
 
-    private void addCounterpartAddressToColumn(Company cpty, PdfPTable column) {
+    void addCounterpartAddressToColumn(Company cpty, PdfPTable column) {
         column.addCell(cpty.name)
         column.addCell(cpty.address.line1)
         column.addCell(cpty.address.line2)
@@ -54,7 +54,7 @@ class InvoiceSummaryWidget {
         column.addCell(cpty.address.postcode)
     }
 
-    private def buildRightHandSummaryColumn(Invoice invoice) {
+    def buildRightHandSummaryColumn(Invoice invoice) {
 
         PdfPTable col2 = new PdfPTable(false, 2)
 

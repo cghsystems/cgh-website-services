@@ -24,11 +24,11 @@ class InvoiceHeaderWidget {
         header.setWidthPercentage(PDFDocumentConstants.TABLE_WIDTH)
 
         header.addCell(nameCol)
-        header.addCell(addressCol)
+        header.addCell(addressCol)ã
         return header
     }
 
-    private void addAddressToColumn(Address address, PdfPTable column) {
+    void addAddressToColumn(Address address, PdfPTable column) {
         def closure = { column.addCell(it) }
         address.buildAddress(closure, address)
     }

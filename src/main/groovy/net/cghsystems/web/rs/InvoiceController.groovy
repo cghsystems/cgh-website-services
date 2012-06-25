@@ -1,14 +1,16 @@
 package net.cghsystems.web.rs
 
 import groovy.util.logging.Log4j
+import net.cghsystems.model.invoice.Invoice
 import net.cghsystems.model.invoice.builders.InvoiceBuilder
 import net.cghsystems.model.invoice.builders.InvoiceParameters
+import net.cghsystems.pdf.invoice.builder.InvoicePDFDocumentBuilder
 
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
-import org.springframework.web.HttpMediaTypeNotAcceptableException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseBody
@@ -29,10 +31,11 @@ import org.springframework.web.bind.annotation.ResponseStatus
  * {@code MappingJacksonJsonView} via the application context. See {@link InvoiceControllersApplicationContext} 
  *
  */
-@Mixin(InvoiceBuilder)
 @Controller
 @RequestMapping("/invoice")
 @Log4j
+@Mixin(InvoiceBuilder)
+@Mixin(InvoicePDFDocumentBuilder)
 class InvoiceController {
 
     /**
@@ -47,10 +50,12 @@ class InvoiceController {
      * to JSON on our behalf.
      */
     @ResponseBody
-    @RequestMapping(value = "/document/{id}", method = RequestMethod.GET)
-    def getInvoiceDocument(@PathVariable("id") documentId) {
-        log.info("Received request for Invoice Document with Id: ${documentId}")
-        "test".bytes
+    @RequestMapping(value = "/document/", method = RequestMethod.POST)
+    def getInvoiceDocument(@RequestBody Invoice invoice) {
+        log.info("Received request for Invoice Document with Id: ${invoice}")
+        final os =  new ByteArrayOutputStream()
+        generate(invoice, os)
+        os.toByteArray()
     }
 
     /**
@@ -92,7 +97,7 @@ class InvoiceController {
         "test"
     }
 
-    @ExceptionHandler(HttpMediaTypeNotAcceptableException)
+    @ExceptionHandler(Exception)
     void handle(e) {
         e.printStackTrace()
     }

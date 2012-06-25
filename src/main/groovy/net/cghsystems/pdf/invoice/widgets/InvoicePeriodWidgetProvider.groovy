@@ -58,7 +58,7 @@ class InvoicePeriodWidgetProvider {
         return main
     }
 
-    private bounceInvoiceIfInValid(Invoice invoice) {
+    void bounceInvoiceIfInValid(Invoice invoice) {
         if(!invoice.isValid()) {
             throw new IllegalStateException("Invoice Object is NotValid: ${invoice.isValid().message}")
         }

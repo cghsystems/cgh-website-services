@@ -1,5 +1,6 @@
 package net.cghsystems.model.invoice
 
+import groovy.transform.ToString
 import net.cghsystems.groovy.transform.Validateable
 import net.cghsystems.groovy.transform.Validateable.ValidatableReturnTypes
 
@@ -7,6 +8,7 @@ import net.cghsystems.groovy.transform.Validateable.ValidatableReturnTypes
  * The domain object representing the totals that are displayed on the invoice 
  */
 @Validateable(ValidatableReturnTypes.NOT_VALID_FOR_INVALID)
+@ToString
 class InvoiceCalculation {
     Integer days
     Double rate
