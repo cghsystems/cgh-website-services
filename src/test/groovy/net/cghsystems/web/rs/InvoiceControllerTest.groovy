@@ -7,12 +7,10 @@ import static org.junit.Assert.*
 import static org.springframework.test.web.server.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.server.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.server.result.MockMvcResultMatchers.*
-import net.cghsystems.model.invoice.builders.InvoiceBuilder
-import net.cghsystems.model.invoice.builders.InvoiceParameters
+import net.cghsystems.model.invoice.builders.InvoiceTestModelBuilder
 import net.cghsystems.pdf.itext.ItextMetaClassesRegistrar
 import net.cghsystems.web.rs.ioc.InvoiceControllersApplicationContext
 
-import org.codehaus.jackson.map.ObjectMapper
 import org.hamcrest.MatcherAssert
 import org.junit.BeforeClass
 import org.junit.Test
@@ -21,8 +19,7 @@ import org.springframework.test.web.server.MvcResult
 import org.springframework.test.web.server.ResultMatcher
 import org.springframework.test.web.server.setup.MockMvcBuilders
 
-@Mixin(ObjectMapper)
-@Mixin(InvoiceBuilder)
+@Mixin(InvoiceTestModelBuilder)
 class InvoiceControllerTest {
 
     @BeforeClass
@@ -33,13 +30,8 @@ class InvoiceControllerTest {
     @Test
     void shouldGetInvoiceDocument() {
 
-        final  invoiceParameters = new InvoiceParameters(clientId: 1,
-                companyId: 1, days: 12, toDate: "12/12/2012",
-                fromDate: "12/12/2012", taxPointDate: "12/12/2012")
-        final invoice = createInvoice(invoiceParameters)
-        final invoiceJson = writeValueAsString(invoice)
-
-        def matcher = new ResultMatcher() {
+        //Ensures that the invoice/document rest interface return a  byte Array with content.
+        final matcher = new ResultMatcher() {
                     public void match(MvcResult result) throws Exception {
                         final actual = result.getResponse().getContentLength()
                         final expected = 1776
@@ -47,24 +39,17 @@ class InvoiceControllerTest {
                     }
                 }
 
+        final invoiceJson = createInvoiceWithDefaultInvoiceParameters().toJson()
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
-                .perform(post("/invoice/document/", invoiceJson).contentType(MediaType.APPLICATION_JSON).body(invoiceJson.bytes))
+                .perform(post("/invoice/document/").contentType(MediaType.APPLICATION_JSON).body(invoiceJson.bytes))
                 .andExpect(status().isOk())
                 .andExpect(matcher)
     }
 
     @Test
     void shouldGenerateInvoiceWithValidParameters() {
-
         def (clientId, companyId, days) = [1, 1, 34]
-
-        final  invoiceParameters = new InvoiceParameters(clientId: clientId,
-                companyId: companyId, days: days, toDate: "12/12/2012",
-                fromDate: "12/12/2012", taxPointDate: "12/12/2012")
-        final invoice = createInvoice(invoiceParameters)
-
-        final expected = writeValueAsString(invoice)
-
+        final expected = createInvoiceWithParameters(clientId, companyId, days).toJson()
         MockMvcBuilders.annotationConfigSetup(InvoiceControllersApplicationContext).build()
                 .perform(get("/invoice/create/{companyId}/{clientId}/{days}", clientId,companyId,days))
                 .andExpect(status().isCreated())
